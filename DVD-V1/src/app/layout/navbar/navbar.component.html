@@ -1,0 +1,40 @@
+
+
+<nav class="navbar navbar-expand-lg bg-primary">
+    <a class="navbar-brand" href="#">
+  <img src="https://www.freeiconspng.com/uploads/dvd-logo-png-10.png" alt="DVD" style="height: 38px; margin: -6px 6px -6px 20px;">
+   </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link active" routerLink="home">Home | <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" *ngIf="authority === 'user'">
+          <a class="nav-link" routerLink="user">Profile </a>
+        </li>
+        <li class="nav-item" *ngIf="authority === 'admin'" class="nav-item">
+          <a class="nav-link" href="#">Admin Board | </a>
+        </li>
+        <li *ngIf="!authority" class="nav-item">
+            <a class="nav-link" routerLink="auth/login"> Login </a>
+          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          | Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="movies">Movies</a> 
+            <a class="dropdown-item" routerLink="musics">Music</a> 
+            <a class="dropdown-item" routerLink="games">Games</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0" style="margin-right: 16px;">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+        <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+  </nav>

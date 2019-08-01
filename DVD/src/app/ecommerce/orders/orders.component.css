@@ -1,0 +1,10 @@
+#carte-imgs {
+    display: flex;
+    margin-top: 10px;
+    padding-left: 42px;
+}
+#carte-imgs img{
+    height: 120px;
+    width: 220px;
+    margin-left: 10px;
+}

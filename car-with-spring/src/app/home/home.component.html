@@ -1,0 +1,8 @@
+<mat-card>
+  <mat-card-content>
+     <button mar-raised-button color="accent" *ngIf="!isAuthentifcated"
+     (click)="auth.loginRedirect()">Login</button>
+     <button mar-raised-button color="accent" *ngIf="isAuthentifcated"
+     [routerLink]="['/car-list']"> Car List </button>
+  </mat-card-content>
+</mat-card>

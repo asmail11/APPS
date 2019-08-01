@@ -1,0 +1,20 @@
+<table class="table table-striped-bordered" *ngIf="musics">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>CreateAt</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let music of musics | async">
+        <td>{{music.id}}</td>
+        <td>{{music.name}}</td>
+        <td>{{music.description}}</td>
+        <td>{{music.price}}</td>
+        <td>{{music.createAt}}</td>
+      </tr>
+    </tbody>
+</table>

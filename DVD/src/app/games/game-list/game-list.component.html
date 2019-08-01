@@ -1,0 +1,20 @@
+<table class="table table-striped-bordered" *ngIf="games">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>CreateAt</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let game of games | async">
+        <td>{{game.id}}</td>
+        <td>{{game.name}}</td>
+        <td>{{game.description}}</td>
+        <td>{{game.price}}</td>
+        <td>{{game.createAt}}</td>
+      </tr>
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+
+<div class="container" style="margin-top: 40px"> <!-- Admin tab -->
+  <div class="panel panel-info" style="margin-bottom: 100px">
+      <div class="panel-heading">
+         <p style="font-size: 18px; font-weight: bold; color: #545454;"><fa name="gamepad" animation="spin"></fa> Update Product </p>
+      </div> 
+      <div class="panel-body" *ngIf="addProductct">
+
+          <div [hidden]="submitted" style="width: 400px;">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="addProductct.name" name="name">
+              </div>
+
+              <div class="form-group">
+                      <label for="price">Price</label>
+                      <input type="text" class="form-control" id="price" required [(ngModel)]="addProductct.price" name="price">
+                    </div>
+
+              <div class="form-group">
+                <label for="pictureUrl">Photo</label>
+                <input type="text" class="form-control" id="pictureUrl" required [(ngModel)]="addProductct.pictureUrl" name="pictureUrl">
+              </div>
+      
+          
+              <button type="submit" class="btn btn-primary">Add</button>
+            </form>  
+            <button style="margin-top: 10px" (click)="homePage()" class="btn btn-danger">Cancel</button>
+          </div>      
+
+      </div>  
+
+      <div [hidden]="!submitted" style="text-align: center; padding-bottom: 20px;"> 
+        <div class="container">
+         <div class="alert alert-success" role="alert">
+           <h4>You submitted successfully!</h4>
+         </div>
+       <button class="btn btn-success" (click)="homePage()">Home</button>
+       <button style="margin-left: 8px" (click)="homePage()" class="btn btn-danger">Cancel</button>
+        </div>
+         </div>
+
+  </div>
+</div>
+

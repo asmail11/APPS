@@ -1,0 +1,34 @@
+<br>
+<header class="masthead bg-primary text-white text-center">
+    <div class="container"><br>
+      <h1 class="text-uppercase mb-0">Super Market App</h1>
+      <hr class="star-light">
+    </div>
+</header>
+<div class="container">
+  <form (ngSubmit) = "processForm()">
+      <div class="form group">
+          <input type="hidden" name="id" class="form-control" [(ngModel)]="user.id">
+      </div>
+
+      <div class="form group">
+          <label for="name"> Name</label>
+          <input type="text" name="name" class="form-control" [(ngModel)]="user.name">
+      </div>
+
+      <div class="form group">
+          <label for="quantity">Quantity</label>
+          <input type="text" name="quantity" class="form-control" [(ngModel)]="user.quantity">
+      </div>
+
+      <div class="form group">
+        <label for="date">Date</label>
+        <input type="text" name="date" class="form-control" [(ngModel)]="user.date">
+    </div>
+
+      <input type="submit" value="save" class="btn btn-success">
+  </form>
+</div>
+<footer class="container-fluid bg-4 text-center">
+    <p> Copyright Ⓒ Asmail :All Rights Reserved</p> 
+</footer>

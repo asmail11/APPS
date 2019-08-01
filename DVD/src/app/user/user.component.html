@@ -1,0 +1,21 @@
+
+<div class="container" *ngIf="listUsers">
+  <div class="panel panel-primary">
+     <div class="panel-heading"> Liste des users </div>
+          <div class="panel-body">
+            <span *ngFor="let user of listUsers">
+              <button (click)="onGetUsers(user)" [ngClass]="user.id==currentUser.id?'btn btn-danger':'btn btn-primary'">{{user.firstName}}</button>
+            </span>
+            <p></p>
+            <table class="table" *ngIf="listUsers">
+               <tr><th>firstName</th><th>lastname</th><th></th></tr>
+               <tr *ngFor="let user of listUsers">
+                   <td>{{user.firstName}}</td>
+                   <td>{{user.lastName}}</td>
+               </tr>
+            </table>
+          </div>
+    
+  </div>
+</div>
+

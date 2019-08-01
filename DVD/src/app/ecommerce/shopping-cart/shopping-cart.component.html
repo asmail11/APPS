@@ -1,0 +1,52 @@
+<div style="background: rgba(0,0,0,.03); border: 1px solid rgba(0,0,0,.125); padding: 15px">
+
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header text-center"><span>  Your informations </span></div>
+        <div class="card-body" style="padding: 0px 5px 10px 5px  !important">
+                <div class="text-center mt-5" style="text-align: left !important; padding: 0">                 
+                <div>
+                <form>
+                  <input class="form-control form-control-sm" type="text" placeholder="Fullname">
+                  <input style="margin-top: 5px" class="form-control form-control-sm" type="text" placeholder="Addresse">
+                </form> 
+                </div>
+                </div>
+        </div>
+    </div>
+
+<div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header text-center"><span>  Derivery is {{radioSel.name}}</span></div>
+        <div class="card-body" style="padding: 0px !important">
+                <div class="text-center mt-5" style="text-align: left !important; padding: 0">                 
+                <div>
+                  <ul class="list-group" style="color: black">
+                        <li class="list-group-item"  *ngFor="let item of itemsList" style="background: #ffc107 !important">
+                          <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{item.value}}" (change)="onItemChange(item)"/> 
+                          {{item.name}}{{item.price}}            
+                        </li>
+                  </ul>
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header text-center">Shopping Cart</div>
+            <div class="card-body">
+                <h5 class="card-title">Total: ${{total}} </h5>
+                <hr>
+                <h6 class="card-title">Items bought:</h6>
+        
+                <ul>
+                    <li *ngFor="let order of orders.productOrders">
+                        {{ order.product.name }} - {{ order.quantity}} pcs.
+                    </li>
+                </ul>
+        
+                <button class="btn btn-light btn-block" (click)="finishOrder()"
+                        [disabled]="orders.productOrders.length == 0">Checkout
+                </button>
+            </div>
+        </div>
+        
+    </div>

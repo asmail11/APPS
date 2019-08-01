@@ -1,0 +1,28 @@
+<div class="container" style="margin-top: 40px"> <!-- Admin tab -->
+  <div class="panel panel-info" style="margin-bottom: 100px">
+      <div class="panel-heading">
+         <p style="font-size: 18px; font-weight: bold; color: #545454;"><fa name="gamepad" animation="spin"></fa> Product Details</p>
+      </div> 
+      <div class="panel-body" *ngIf="product">
+
+        <div class="card" style="width: 28rem;">
+          <img style="margin-top: 10px;" [src]="product.pictureUrl" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Name: {{product.name}}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Price: {{product.price}}</li>
+            <li class="list-group-item">ID: {{product.id}}</li>
+            <li class="list-group-item"><a href="#">
+              <span class="button btn btn-danger" *ngIf='product.active' (click)='updateActive(false)'>Inactive</span>
+              <span class="button btn btn-success" *ngIf='!product.active' (click)='updateActive(true)'>Active</span>
+          </a></li>
+          </ul>
+          <div class="card-body">
+            <button (click)="homePage()" class="btn btn-danger">Cancel</button>
+          </div>
+        </div>
+
+      </div>  
+  </div>
+</div>

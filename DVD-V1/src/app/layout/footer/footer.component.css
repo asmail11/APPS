@@ -1,0 +1,17 @@
+.bg-custom {
+    background: linear-gradient(to right, #3848A2, #007bff, #039BE6, #028BCF, #3F51B5);
+  }
+  .navbar {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color:  #ffda79 !important;
+  }
+  .navbar-brand{
+    color:  #ffda79 !important;
+    font-size: 14px;
+  }
+  .navbar-brand:hover{
+      color: #FFF !important;
+  }

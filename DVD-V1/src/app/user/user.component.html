@@ -1,0 +1,71 @@
+<div class="container" *ngIf="info.token; else loggedOut">
+        <div class="row profile">
+            <div class="col-md-3" style="background: aliceblue; padding: 20px;">
+                <div class="profile-sidebar">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKqXeFw93-DRzIVaPnvDAzMDBVfGqpLr_JsIyRgiNFB2XP16uj" class="img-responsive" alt="">
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            {{name}}
+                        </div>
+                        <div class="profile-usertitle-job">
+                            {{email}}
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-success btn-sm" (click)='updateUser()'>Update</button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="logout()">Logout</button>
+                    </div>
+                    <!-- END SIDEBAR BUTTONS -->
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a>
+                                <i class="glyphicon glyphicon-home"></i>
+                                {{address}} </a>
+                            </li>
+                            <li>
+                                <a>
+                                <i class="glyphicon glyphicon-user"></i>
+                                {{city}} </a>
+                            </li>
+                            <li>
+                                <a>
+                                <i class="glyphicon glyphicon-ok"></i>
+                                {{zip}} </a>
+                            </li>
+                            <li>
+                                <a>
+                                <i class="glyphicon glyphicon-flag"></i>
+                                {{state}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END MENU -->
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="profile-content">
+                   Some user related content goes here...
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>
+    <strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
+    </center>
+    <br>
+    <br>
+
+    <ng-template #loggedOut>
+        <div class="alert alert-warning">
+            Please Login.
+        </div>     
+     </ng-template>

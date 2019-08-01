@@ -1,0 +1,52 @@
+<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+    <div class="card-header text-center">Shopping Cart</div>
+    <div class="card-body">
+        <h5 class="card-title">Total: ${{total}}</h5>
+        <hr>
+        <h6 class="card-title">Items bought:</h6>
+
+        <ul>
+            <li *ngFor="let order of orders.productOrders">
+                {{ order.product.name }} - {{ order.quantity}} pcs.
+            </li>
+        </ul>
+
+        <button class="btn btn-light btn-block" (click)="finishOrder()"
+                [disabled]="orders.productOrders.length == 0">Checkout
+        </button>
+    </div>
+</div>
+
+<div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header text-center"><span style="color: black">  Derivery is {{radioSel.name}}</span></div>
+        <div class="card-body" style="padding: 0px !important; margin-top: -30px;">
+                <div class="text-center mt-5" style="text-align: left !important; padding: 0">                 
+                <div>
+                  <ul class="list-group" style="color: black">
+                        <li class="list-group-item"  *ngFor="let item of itemsList" style="background: #ffc107 !important;">
+                          <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{item.value}}" (change)="onItemChange(item)"/> 
+                          {{item.name}}{{item.price}}            
+                        </li>
+                  </ul>
+                </div>
+             </div>
+        </div>
+    </div>
+
+
+<!-- <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header text-center"><span style="color: gold">  Categories </span></div>
+        <div class="card-body" style="padding: 0px !important">
+                <div class="text-center mt-5" style="text-align: left !important; padding: 0">                 
+                <div>
+                  <ul class="list-group">
+                        <li class="list-group-item" style="margin-top: -30px;"> <a routerLink="/user">Movies</a> </li>
+                        <li class="list-group-item"> <a routerLink="/music">Music</a> </li>
+                        <li class="list-group-item"> <a routerLink="/games">Games</a> </li>
+                  </ul>
+                </div>
+             </div>
+        </div>
+    </div> -->
+
+    <router-outlet></router-outlet>

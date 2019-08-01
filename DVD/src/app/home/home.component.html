@@ -1,0 +1,81 @@
+<div class="container" style="margin: 20px; color: #3d3d3d; text-align: center">
+    <div class="row">
+        <div class="col-lg-6 offset-6"></div>
+        <div class="col-lg-6 "><h1>Wlecome Admin To DVD</h1></div>
+    </div>
+  </div>
+<hr>
+
+<div class="container" id="homePage">
+<div class="row">
+  <div class="col-md-12">  
+    <h3 style="color:  #9e9e9e;;" id="event-list-margin">Categories</h3>
+  </div>
+
+
+<div class="col-md-12">
+  <div class="col-xs-3" style="background: aliceblue; padding: 10px 0px; border-radius: 7px;"> <!-- required for floating -->
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs tabs-left">
+      <li [ngClass]="{'active': tab.active}" *ngFor="let tab of tabs">
+        <a (click)="tabChange(tab)">{{tab.name}}</a>
+      </li>
+    </ul>
+   <div style="text-align: center; margin: 20px 10px">
+      <button class="button button2" type="submit" (click)="addCategory()">Add Category </button>
+   </div>
+  </div>
+  
+
+  <div class="col-xs-9">
+    <div class="tab-content">
+      <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 1, 'hideTab':selectedUserTab != 1}"> <!-- Profile tab -->
+          <div class="panel panel-primary">
+              <div class="panel-heading">
+                 <p style="font-size: 18px; font-weight: bold;"><fa name="film" animation="spin"></fa> Movies</p>
+              </div> 
+              <div class="panel-body">
+                  <app-movie-list></app-movie-list>
+                  <app-gategory-tree></app-gategory-tree>
+              </div>  
+          </div>
+      </div>
+
+      <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 2, 'hideTab':selectedUserTab != 2}"> <!-- Change password tab -->
+          <div class="panel panel-success">
+              <div class="panel-heading">
+                 <p style="font-size: 18px; font-weight: bold; color: #545454;"><fa name="music" animation="spin"></fa> Musics</p>
+              </div> 
+              <div class="panel-body">
+                 <app-music-list></app-music-list>
+              </div>  
+          </div>
+      </div>
+
+      <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 3, 'hideTab':selectedUserTab != 3}"> <!-- Change password tab -->
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+               <p style="font-size: 18px; font-weight: bold; color: #545454;"><fa name="gamepad" animation="spin"></fa> Games</p>
+            </div> 
+            <div class="panel-body">
+               <app-game-list></app-game-list>
+            </div>  
+        </div>
+    </div>
+
+    <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 4, 'hideTab':selectedUserTab != 4}"> <!-- Change password tab -->
+      <div class="panel panel-warning">
+          <div class="panel-heading">
+             <p style="font-size: 18px; font-weight: bold; color: #545454;"><fa name="gamepad" animation="spin"></fa> Products</p>
+          </div> 
+          <div class="panel-body">
+             <app-products-list></app-products-list>
+          </div>  
+      </div>
+  </div>
+
+    </div>
+  </div>
+</div>
+</div>
+</div>

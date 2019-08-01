@@ -1,0 +1,39 @@
+<div class="container" style="margin-top: 40px"> <!-- Admin tab -->
+  <div class="panel panel-info" style="margin-bottom: 100px">
+      <div class="panel-heading">
+         <p style="font-size: 18px; font-weight: bold; color: #545454;"><fa name="gamepad" animation="spin"></fa> Create Categorie </p>
+      </div> 
+      <div class="panel-body" *ngIf="category">
+
+          <div [hidden]="submitted" style="width: 400px;">
+            <form (ngSubmit)="onSubmit()">
+
+              <div class="form-group">
+                <label for="nameCat">Name</label>
+                <input type="text" class="form-control" id="nameCat" required [(ngModel)]="category.nameCat" name="nameCat">
+              </div>
+                    
+          
+              <div class="form-group">
+                  <label for="createAt">CreateAt</label>
+                  <input type="date" class="form-control" id="createAt" required [(ngModel)]="category.createAt" name="createAt">
+                </div>
+          
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <button style="margin-top: 10px" (click)="homePage()" class="btn btn-danger">Cancel</button>
+          </div>  
+          
+          <div [hidden]="!submitted" style="text-align: center; padding-bottom: 20px;"> 
+            <div class="container">
+             <div class="alert alert-success" role="alert">
+               <h4>You submitted successfully!</h4>
+             </div>
+           <button class="btn btn-success" (click)="homePage()">Home</button>
+           <button style="margin-left: 8px" (click)="homePage()" class="btn btn-danger">Cancel</button>
+            </div>
+             </div>
+
+      </div>  
+  </div>
+</div>

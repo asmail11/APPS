@@ -1,0 +1,20 @@
+<div class="container" [hidden]="orderFinished">
+    <div class="row">
+      <div class="col-lg-4">
+          <h2 class="title-page"><i class="fas fa-music"></i> Music <i class="fas fa-music"></i></h2>
+      </div>
+    </div>
+  </div>
+ <div class="row">
+     <div class="col-md-9">
+         <app-music #productsC [hidden]="orderFinished"></app-music>
+     </div>
+     <div class="col-md-3">
+         <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
+                            [hidden]="orderFinished"></app-shopping-cart>
+     </div>
+    
+     <div class="col-md-6 offset-3">
+         <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
+     </div>
+ </div>

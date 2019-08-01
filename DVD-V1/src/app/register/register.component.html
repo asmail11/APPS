@@ -1,0 +1,147 @@
+<div *ngIf="isSignedUp; else signupForm" class="alert alert-warning" style="padding-top: 8px;">
+    Your registration is successful. Please login!
+    <button class="btn btn-link" (click)="navigateToLogin()"> Login </button>
+  </div>
+   
+  
+  <ng-template #signupForm> 
+      <br>
+      <div class="row">
+        <div class="col-100">
+          <div class="container" style="margin-top: -22px;">
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            
+            <div class="row">
+                    <div class="col-50">
+                      <h3>Billing Address</h3>
+                     
+                          <label for="name">Fullname</label>
+                          <input type="text" name="name" [(ngModel)]="form.name" #name="ngModel" required placeholder="John M. Doe" />
+                          <div *ngIf="f.submitted && name.invalid" style="color: red">
+                            <span *ngIf="name.errors.required">Fullname is required</span>
+                          </div>
+  
+                          <label for="email">Email</label>
+                          <input type="email" name="email" [(ngModel)]="form.email" #email="ngModel" required placeholder="john@example.com"/>
+                          <div *ngIf="f.submitted && email.invalid" style="color: red">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                          </div>
+  
+                          <label for="address">Address</label>
+                          <input type="text" name="address" [(ngModel)]="form.address" #address="ngModel" required placeholder="542 15th Street"/>
+                          <div *ngIf="f.submitted && address.invalid" style="color: red">
+                            <div *ngIf="address.errors.required">Address is required</div>
+                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                          </div>
+  
+                          <label for="city">City</label>
+                          <input type="text" name="city" [(ngModel)]="form.city" #city="ngModel" required placeholder="Paris"/>
+                          <div *ngIf="f.submitted && city.invalid">
+                            <div *ngIf="city.errors.required">City is required</div>
+                          </div>
+  
+                          <div class="row">
+                              <div class="col-50">
+                                  <label for="state">State</label>
+                                  <input type="text" name="state" [(ngModel)]="form.state" #state="ngModel" required placeholder="FR"/>
+                                  <div *ngIf="f.submitted && state.invalid" style="color: red">
+                                    <div *ngIf="state.errors.required">State is required</div>
+                                  </div>
+                              </div>
+                              <div class="col-50">
+                                  <label for="city">Zip</label>
+                          <input type="number" name="zip" [(ngModel)]="form.zip" min="1" max="5" #zip="ngModel" required placeholder="75000"/>
+                          <div *ngIf="f.submitted && zip.invalid" style="color: red">
+                            <div *ngIf="zip.errors.required">Zip is required</div>
+        
+                          </div>
+                              </div>
+                            </div>    
+                            <div class="row">
+                                <div class="col-50">
+                        
+                                    <input type="text" name="username" [(ngModel)]="form.username" #username="ngModel" required placeholder="Username"/>
+                                    <div *ngIf="f.submitted && username.invalid" style="color: red">
+                                      <div *ngIf="username.errors.required">Username is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-50">
+                    
+                            <input type="password" name="password" [(ngModel)]="form.password" max="5" #password="ngModel" required placeholder="Password"/>
+                            <div *ngIf="f.submitted && password.invalid" style="color: red">
+                              <div *ngIf="password.errors.required">Password is required</div>
+                            </div>
+                                </div>
+                              </div>            
+                        
+                    </div>
+          
+                  
+                    <div class="col-50">
+                      <h3>Payment</h3>
+                      <label for="fname">Accepted Cards</label>
+                      <div class="icon-container">
+                        <i class="fa fa-cc-visa" style="color:navy;"></i>
+                        <i class="fa fa-cc-amex" style="color:blue;"></i>
+                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                        <i class="fa fa-cc-discover" style="color:orange;"></i>
+                      </div>
+  
+                      <label for="nameOnCard">Name on card</label>
+                      <input type="text" name="nameOnCard" [(ngModel)]="form.nameOnCard" #nameOnCard="ngModel" required placeholder="John More Doe"/>
+                      <div *ngIf="f.submitted && nameOnCard.invalid" style="color: red">
+                        <div *ngIf="nameOnCard.errors.required">Name on card is required</div>
+                      </div>
+               
+                      <label for="cardNumber">Credit card number</label>
+                      <input type="text" name="cardNumber" [(ngModel)]="form.cardNumber" #cardNumber="ngModel" required placeholder="1111-2222-3333-4444"/>
+                      <div *ngIf="f.submitted && cardNumber.invalid" style="color: red">
+                        <div *ngIf="cardNumber.errors.required">Card number is required</div>
+                      </div>
+  
+                      <label for="expMonth">Exp Month</label>
+                      <input type="text" name="expMonth" [(ngModel)]="form.expMonth" #expMonth="ngModel" required placeholder="September"/>
+                      <div *ngIf="f.submitted && expMonth.invalid" style="color: red">
+                        <div *ngIf="expMonth.errors.required">Month is required</div>
+                      </div>
+  
+  
+                       <div class="row">
+                        <div class="col-50">
+                            <label for="expYear">Exp Year</label>
+                            <input type="text" name="expYear" [(ngModel)]="form.expYear" #expYear="ngModel" required placeholder="2019"/>
+                            <div *ngIf="f.submitted && expYear.invalid" style="color: red">
+                              <div *ngIf="expYear.errors.required">Month is required</div>
+                            </div>
+                        </div>
+                        <div class="col-50">
+                            <label for="cvv">Cvv</label>
+                            <input type="number" name="cvv" [(ngModel)]="form.cvv" #cvv="ngModel" min="1" max="3" required placeholder="123"/>
+                            <div *ngIf="f.submitted && cvv.invalid" style="color: red">
+                              <div *ngIf="cvv.errors.required">Month is required</div>
+                            </div>
+                        </div>
+                      </div> 
+
+                      <div class="row">
+                          <div class="col-50">
+                              <button class="btn btn-primary">Register</button>
+                        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                          Signup failed!<br/>{{errorMessage}}
+                        </div>
+                          </div>
+                        </div> 
+  
+                    </div> 
+                    
+                        
+  
+                  </div>  
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-link" (click)="navigateToLogin()"> Login </button>
+  
+      </ng-template>

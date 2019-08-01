@@ -1,0 +1,35 @@
+
+<div class="container" style="margin-top: 40px"> <!-- Admin tab -->
+  <div class="panel panel-info" style="margin-bottom: 100px">
+      <div class="panel-heading">
+         <p style="font-size: 18px; font-weight: bold; color: #545454;"><fa name="gamepad" animation="spin"></fa> Movie Details</p>
+      </div> 
+      <div class="panel-body" *ngIf="movie">
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="columns">
+                    <ul class="price">
+                      <li class="header" style="background-color:#31b0d5;">Pro</li>
+                      <li class="grey">Price: {{movie.price}}</li>
+                      <li>ID: {{movie.id}}</li>
+                      <li>Name: {{movie.name}}</li>
+                      <li>Description: {{movie.description}}</li>
+                      <li>CreateAt: {{movie.createAt}}</li>
+                      <li class="grey"><a href="#" class="button">
+                          <span class="button is-small btn-danger" *ngIf='movie.active' (click)='updateActive(false)'>Inactive</span>
+                          <span class="button is-small btn-success" *ngIf='!movie.active' (click)='updateActive(true)'>Active</span>
+                      </a></li>
+                    </ul>
+                  </div>
+            </div>
+      
+             <div class="col-lg-9">
+              <img style="margin-top: 10px;" src="https://amp.businessinsider.com/images/5a6b65cccf841046498b488a-750-422.jpg" alt="">
+              <button style="margin: 10px 44px; float: right;" (click)="homePage()" class="btn btn-danger">Cancel</button>
+             </div>
+        </div>
+
+      </div>  
+  </div>
+</div>

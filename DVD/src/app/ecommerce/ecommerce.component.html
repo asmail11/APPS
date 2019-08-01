@@ -1,0 +1,22 @@
+<div class="container" style="margin: 40px; color: #3d3d3d; text-align: center">
+        <div class="row">
+            <div class="col-lg-6 offset-6"></div>
+            <div class="col-lg-6 "><h1>Wlecome User To DVD</h1></div>
+        </div>
+      </div>
+<hr>
+<div class="container">
+<div class="row">
+        <div class="col-md-9">
+            <app-products #productsC [hidden]="orderFinished"></app-products>
+        </div>
+        <div class="col-md-3">
+            <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
+                               [hidden]="orderFinished"></app-shopping-cart>
+        </div>
+        <div class="col-md-6 offset-3">
+            <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

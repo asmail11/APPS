@@ -1,0 +1,28 @@
+<table class="table table-striped-bordered" *ngIf="products">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Create At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let product of products | async">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.decription}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.createAt}}</td>
+        <td><button (click)="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
+          <button (click)="updateProduct(product.id)" class="btn btn-warning" style="margin-left: 8px">Update</button>
+          <button (click)="productDetails(product.id)" class="btn btn-info" style="margin-left: 8px">Details</button>
+      </td>
+      </tr>
+    </tbody>
+</table>
+<button (click)="createProduct()" class="btn btn-primary" style="margin-left: 8px">Create</button>
