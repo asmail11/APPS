@@ -1,0 +1,51 @@
+<h2> Find by borough </h2> <br>
+<form class="example" (ngSubmit)="f.form.valid && onSubmit(restaurant.borough)" #f="ngForm" novalidate>
+  <input type="text" placeholder="Find by borough" name="borough"
+         id="borough" required [(ngModel)]="restaurant.borough">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+
+<br>
+
+<div *ngIf="total>0">
+<div class="panel panel-success">
+  <div class="panel-heading"><h5> Restaurants found by borough </h5> <br></div>
+  <div class="panel-body">
+    <div class="card" *ngFor="let res of restaurants | paginate:{itemsPerPage: 6, currentPage:p}">
+      <div class="card-img" style="background-image:url(http://miam-images.m.i.pic.centerblog.net/b3fd0c57.png);">
+        <div class="overlay">
+          <div class="overlay-content">
+            <a class="hover" (click)="restaurantDetails(res.restaurant_id)">More details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-content">
+          <h2 style="font-size: 18px; color: #1b1e24; margin-bottom: -12px;">{{res.name}}</h2>
+          <h2 style="font-size: 13px;"> Borough : {{res.borough}} <br> Cuisine: {{res.cuisine}}</h2>
+      </div>
+    </div>
+</div>
+</div>
+<div class="panel panel-success" style="margin-top: -22px;">
+  <div class="panel-body" style="padding-bottom: 0 !important;">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div>
+</div>
+</div>
+
+<div *ngIf="total<=0" class="alert alert-danger">
+  <h2>No Result found</h2>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $('.card').delay(1800).queue(function(next) {
+            $(this).removeClass('hover');
+            $('a.hover').removeClass('hover');
+            next();
+        });
+    });
+</script>

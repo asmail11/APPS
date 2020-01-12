@@ -4,6 +4,8 @@ import { Product } from '../models/product.model';
 import { ProductOrders } from '../models/product-orders.model';
 import { Subscription } from 'rxjs';
 import { EcommerceService } from '../services/ecommerce.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-products',
@@ -17,8 +19,10 @@ export class ProductsComponent implements OnInit {
     private shoppingCartOrders: ProductOrders;
     sub: Subscription;
     productSelected: boolean = false;
+    description: string = '';
+    showMyContainerInfo: boolean = false;
 
-    constructor(private ecommerceService: EcommerceService) {
+    constructor(private ecommerceService: EcommerceService, private router: Router) {
     }
 
     ngOnInit() {
@@ -64,6 +68,7 @@ export class ProductsComponent implements OnInit {
                 },
                 (error) => console.log(error)
             );
+
     }
 
     loadOrders() {
@@ -79,5 +84,21 @@ export class ProductsComponent implements OnInit {
         this.loadOrders();
         this.productSelected = false;
     }
-  
+    productInfo(id: number){
+       this.ecommerceService.getProductById(id)
+       .subscribe(data => {
+           this.description = data.description;
+           console.log(this.description);
+       });
+       this.showMyContainerInfo = !this.showMyContainerInfo;
+    }
+    showBtn=-1;
+
+showUndoBtn(index){
+  this.showBtn=index;
+}
+sngleProduct(id: number) {
+    this.router.navigate(['sangle/product', id]);
+  }
+
 }

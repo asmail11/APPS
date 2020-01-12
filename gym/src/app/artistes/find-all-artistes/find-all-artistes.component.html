@@ -1,0 +1,25 @@
+
+<div class="container">
+    <h2> <i class="fas fa-icons" style='font-size:48px;'></i> All artistes {{allNumber}}</h2><hr>
+    <div class="loader" *ngIf="spinnerLoad"></div>
+<div *ngIf="showTable">
+<table class="table table-hover table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Birthdate</th>
+  </tr>
+  <tr *ngFor="let art of artistes | paginate:{itemsPerPage: 6, currentPage:p} ">
+    <td>{{art._id}}</td>
+    <td>{{art.last_name}}</td>
+    <td>{{art.first_name}}</td>
+    <td>{{art.birth_date}}</td>
+  </tr>
+</table>
+<div id="pagination">
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
+  </div>
+</div>
+

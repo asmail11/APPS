@@ -1,58 +1,61 @@
 <div *ngIf="isSignedUp; else signupForm" class="alert alert-warning" style="padding-top: 8px;">
-    Your registration is successful. Please login!
-    <button class="btn btn-link" (click)="navigateToLogin()"> Login </button>
+    {{'Your_registration_is_successful_Please_login' | translate }}
+    <button class="btn btn-link" (click)="navigateToLogin()"> {{'Login' | translate }}</button>
   </div>
    
   
   <ng-template #signupForm> 
-      <br>
+    <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+       {{'Signup_failed' | translate }}<br/>{{errorMessage}}
+    </div>
       <div class="row">
         <div class="col-100">
-          <div class="container" style="margin-top: -22px;">
+          <div class="container" style="margin-bottom: 20px;">
             <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             
             <div class="row">
                     <div class="col-50">
-                      <h3>Billing Address</h3>
+                      <h3> {{'Billing_Address' | translate }}</h3>
                      
-                          <label for="name">Fullname</label>
+                          <label for="name">{{'Full_name' | translate }}</label>
                           <input type="text" name="name" [(ngModel)]="form.name" #name="ngModel" required placeholder="John M. Doe" />
-                          <div *ngIf="f.submitted && name.invalid" style="color: red">
-                            <span *ngIf="name.errors.required">Fullname is required</span>
+                          <div *ngIf="f.submitted && name.invalid" class="alert alert-danger">
+                            <span *ngIf="name.errors.required">{{'Full_name_is_required' | translate }}</span>
                           </div>
   
-                          <label for="email">Email</label>
+                          <label for="email">{{'Email' | translate }}</label>
                           <input type="email" name="email" [(ngModel)]="form.email" #email="ngModel" required placeholder="john@example.com"/>
-                          <div *ngIf="f.submitted && email.invalid" style="color: red">
-                            <div *ngIf="email.errors.required">Email is required</div>
+                          <div *ngIf="f.submitted && email.invalid" class="alert alert-danger">
+                            <span *ngIf="email.errors.required"> {{'Email_is_required' | translate }} </span>
+                            <span *ngIf="email.errors.email">{{'Email_must_be_a_valid_email_address' | translate }}</span>
                           </div>
   
-                          <label for="address">Address</label>
+                          <label for="address">{{'Address' | translate }}</label>
                           <input type="text" name="address" [(ngModel)]="form.address" #address="ngModel" required placeholder="542 15th Street"/>
-                          <div *ngIf="f.submitted && address.invalid" style="color: red">
-                            <div *ngIf="address.errors.required">Address is required</div>
-                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                          <div *ngIf="f.submitted && address.invalid" class="alert alert-danger">
+                            <div *ngIf="address.errors.required"></div>
+                            <span *ngIf="email.errors.required"> {{'Address_is_required' | translate }} </span>
                           </div>
   
-                          <label for="city">City</label>
+                          <label for="city">{{'City' | translate }}</label>
                           <input type="text" name="city" [(ngModel)]="form.city" #city="ngModel" required placeholder="Paris"/>
-                          <div *ngIf="f.submitted && city.invalid">
-                            <div *ngIf="city.errors.required">City is required</div>
+                          <div *ngIf="f.submitted && city.invalid" class="alert alert-danger">
+                            <span *ngIf="city.errors.required">{{'City_is_required' | translate }}</span>
                           </div>
   
                           <div class="row">
                               <div class="col-50">
-                                  <label for="state">State</label>
+                                  <label for="state">{{'State' | translate }}</label>
                                   <input type="text" name="state" [(ngModel)]="form.state" #state="ngModel" required placeholder="FR"/>
-                                  <div *ngIf="f.submitted && state.invalid" style="color: red">
-                                    <div *ngIf="state.errors.required">State is required</div>
+                                  <div *ngIf="f.submitted && state.invalid" class="alert alert-danger">
+                                    <span *ngIf="state.errors.required">{{'State_is_required' | translate }}</span>
                                   </div>
                               </div>
                               <div class="col-50">
-                                  <label for="city">Zip</label>
+                                  <label for="city">{{'Zip' | translate }}</label>
                           <input type="number" name="zip" [(ngModel)]="form.zip" min="1" max="5" #zip="ngModel" required placeholder="75000"/>
-                          <div *ngIf="f.submitted && zip.invalid" style="color: red">
-                            <div *ngIf="zip.errors.required">Zip is required</div>
+                          <div *ngIf="f.submitted && zip.invalid" class="alert alert-danger">
+                            <span *ngIf="zip.errors.required">{{'Zip_is_required' | translate }}</span>
         
                           </div>
                               </div>
@@ -61,15 +64,15 @@
                                 <div class="col-50">
                         
                                     <input type="text" name="username" [(ngModel)]="form.username" #username="ngModel" required placeholder="Username"/>
-                                    <div *ngIf="f.submitted && username.invalid" style="color: red">
-                                      <div *ngIf="username.errors.required">Username is required</div>
+                                    <div *ngIf="f.submitted && username.invalid" class="alert alert-danger">
+                                      <span *ngIf="username.errors.required">{{'Username_is_required' | translate }}</span>
                                     </div>
                                 </div>
                                 <div class="col-50">
                     
                             <input type="password" name="password" [(ngModel)]="form.password" max="5" #password="ngModel" required placeholder="Password"/>
-                            <div *ngIf="f.submitted && password.invalid" style="color: red">
-                              <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="f.submitted && password.invalid" class="alert alert-danger">
+                              <span *ngIf="password.errors.required">{{'Password_is_required' | translate }}</span>
                             </div>
                                 </div>
                               </div>            
@@ -78,8 +81,8 @@
           
                   
                     <div class="col-50">
-                      <h3>Payment</h3>
-                      <label for="fname">Accepted Cards</label>
+                      <h3>{{'Payment' | translate }}</h3>
+                      <label for="fname">{{'Accepted_cards' | translate }}</label>
                       <div class="icon-container">
                         <i class="fa fa-cc-visa" style="color:navy;"></i>
                         <i class="fa fa-cc-amex" style="color:blue;"></i>
@@ -87,49 +90,49 @@
                         <i class="fa fa-cc-discover" style="color:orange;"></i>
                       </div>
   
-                      <label for="nameOnCard">Name on card</label>
+                      <label for="nameOnCard">{{'Name_on_card' | translate }} </label>
                       <input type="text" name="nameOnCard" [(ngModel)]="form.nameOnCard" #nameOnCard="ngModel" required placeholder="John More Doe"/>
-                      <div *ngIf="f.submitted && nameOnCard.invalid" style="color: red">
-                        <div *ngIf="nameOnCard.errors.required">Name on card is required</div>
+                      <div *ngIf="f.submitted && nameOnCard.invalid" class="alert alert-danger">
+                        <span *ngIf="nameOnCard.errors.required">{{'Name_on_card_is_required' | translate }}</span>
                       </div>
                
-                      <label for="cardNumber">Credit card number</label>
+                      <label for="cardNumber">{{'Credit_card_number' | translate }} </label>
                       <input type="text" name="cardNumber" [(ngModel)]="form.cardNumber" #cardNumber="ngModel" required placeholder="1111-2222-3333-4444"/>
-                      <div *ngIf="f.submitted && cardNumber.invalid" style="color: red">
-                        <div *ngIf="cardNumber.errors.required">Card number is required</div>
+                      <div *ngIf="f.submitted && cardNumber.invalid" class="alert alert-danger">
+                        <span *ngIf="cardNumber.errors.required">{{'Credit_card_number_is_required' | translate }}</span>
                       </div>
   
-                      <label for="expMonth">Exp Month</label>
+                      <label for="expMonth">{{'expMonth' | translate }}</label>
                       <input type="text" name="expMonth" [(ngModel)]="form.expMonth" #expMonth="ngModel" required placeholder="September"/>
-                      <div *ngIf="f.submitted && expMonth.invalid" style="color: red">
-                        <div *ngIf="expMonth.errors.required">Month is required</div>
+                      <div *ngIf="f.submitted && expMonth.invalid" class="alert alert-danger">
+                        <span *ngIf="expMonth.errors.required">{{'Exp_Month_is_required' | translate }}</span>
                       </div>
   
   
                        <div class="row">
                         <div class="col-50">
-                            <label for="expYear">Exp Year</label>
+                            <label for="expYear">{{'expYear' | translate }}</label>
                             <input type="text" name="expYear" [(ngModel)]="form.expYear" #expYear="ngModel" required placeholder="2019"/>
-                            <div *ngIf="f.submitted && expYear.invalid" style="color: red">
-                              <div *ngIf="expYear.errors.required">Month is required</div>
+                            <div *ngIf="f.submitted && expYear.invalid" class="alert alert-danger">
+                              <span *ngIf="expYear.errors.required">{{'expYear_is_required' | translate }}</span>
                             </div>
                         </div>
                         <div class="col-50">
                             <label for="cvv">Cvv</label>
                             <input type="number" name="cvv" [(ngModel)]="form.cvv" #cvv="ngModel" min="1" max="3" required placeholder="123"/>
-                            <div *ngIf="f.submitted && cvv.invalid" style="color: red">
-                              <div *ngIf="cvv.errors.required">Month is required</div>
+                            <div *ngIf="f.submitted && cvv.invalid" class="alert alert-danger">
+                              <span *ngIf="cvv.errors.required">{{'Cvv_is_required' | translate }}</span>
                             </div>
                         </div>
                       </div> 
 
                       <div class="row">
                           <div class="col-50">
-                              <button class="btn btn-primary">Register</button>
-                        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-                          Signup failed!<br/>{{errorMessage}}
+                           <button class="btn btn-success" (click)="navigateToLogin()"> {{'Login' | translate }} </button>
                         </div>
-                          </div>
+                        <div class="col-50">
+                          <button class="btn btn-primary">{{'Register' | translate }} </button>
+                         </div>
                         </div> 
   
                     </div> 
@@ -141,7 +144,5 @@
           </div>
         </div>
       </div>
-
-      <button class="btn btn-link" (click)="navigateToLogin()"> Login </button>
   
       </ng-template>

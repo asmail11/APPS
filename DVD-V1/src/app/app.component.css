@@ -1,5 +1,24 @@
 .container{
   background: #f5f6fa;
   border: 1px solid #d9d9d9; 
-  padding-bottom: 60px;
+  padding-bottom: 40px;
+}
+#showMe {
+animation: cssAnimation 0s 8s forwards;
+opacity: 0;
+width: 200px;
+overflow: hidden;
+position: fixed;
+z-index: 999999;
+margin-top: 500px;
+color: #3848A2;
+}
+
+@keyframes cssAnimation {
+  99% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
 }

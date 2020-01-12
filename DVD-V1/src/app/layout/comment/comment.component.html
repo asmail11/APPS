@@ -1,0 +1,112 @@
+<div class="panel panel-default" id="comonent" style="padding-bottom: 400px; margin-top: 14px; color: #1e272e !important;">
+  <div class="panel-heading" style="font-size: 30px;"> <i class="fas fa-comments"></i> {{ 'Comments' | translate }} <i class="fas fa-comments"></i></div>
+  <div class="panel-body">
+    
+      <div class="containers" *ngFor="let comment of comments | async let i = index;">
+      
+        <div style="background: #FFF; padding: 20px; border-radius: 10px;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT1zZkQjtBjyYp5uq1qhmdpmoRkTFws1hL54z8U40EQv08o06Q" alt="Avatar" style="width:90px">
+          <p id="content-comonent">
+            <strong>{{ 'Title' | translate }}: {{comment.title}}</strong> <br>
+            {{comment.message}}
+          </p>
+          <div style="color: #2980b9;"><span>{{ 'Added_by' | translate }}:</span>{{comment.addedBy}} <i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>  
+             {{comment.addedAt | date: 'yyyy-MM-dd hh:mm' }} <i class="fas fa-calendar-check"></i>
+
+             <div style="float: right; font-size: 22px;">
+              <button (click)=showUndoBtn(i) (click)="commentById(comment.id)" title="Replay" class="btn btn-default"> <i class="fas fa-reply-all"></i></button>
+              <button  class="btn btn-default" (click)="dislikeButtonClick()"> <i class="far fa-thumbs-down"></i>{{comment.id}}</button>
+              <button  class="btn btn-default" (click)="likeButtonClick()"> <i class="far fa-thumbs-up"></i>{{comment.id}}</button>
+            </div>
+          </div>
+  
+        </div>
+   
+        <hr style="border: 1px solid #ddd;">
+
+          <div id="replay" class="row">
+           <div class="col-lg-2"></div>
+           <div class="col-lg-10"> 
+             <div style="background: #f7f1e3; padding: 20px 10px; border-radius: 10px; margin-top: 8px; border: 1px solid #d7d7d7;"
+             *ngFor="let replayComment of replayComments | async let i = index;">
+              <p id="content-replay">
+                {{replayComment.message}}
+              </p>
+              <div style="color: #8e44ad;"><span>{{ 'Added_by' | translate }}:</span>{{replayComment.addedBy}} <i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>  
+                 {{replayComment.addedAt | date: 'yyyy-MM-dd hh:mm' }} <i class="fas fa-calendar-check"></i>
+    
+                 <div style="float: right; font-size: 22px;">
+                  <button (click)=showUndoBtn(i) (click)="commentById(comment.id)" title="Replay" class="btn btn-default"> <i class="fas fa-reply-all"></i></button>
+                  <button class="btn btn-default" click)=showUndoBtn(i) (click)="commentById(comment.id)" (click)="dislikeButtonClick()"> <i class="far fa-thumbs-down"></i>{{numberOfLikes}}</button>
+                  <button class="btn btn-default" click)=showUndoBtn(i) (click)="commentById(comment.id)" (click)="likeButtonClick()"> <i class="far fa-thumbs-up"></i>{{numberOfLikes}}</button>
+                 </div>
+              </div>
+             </div>
+           </div>
+          </div>
+
+          <div class="modal" [attr.id]="'undoBtn'+i" *ngIf="showBtn===i && showReplay" class="editBtn" md-raised-button color="primary">                                 
+            <div class="sendMessage" *ngIf="info.token; else loggedOut">
+             <app-replay-comment #replayComment></app-replay-comment>
+          </div>
+         </div>
+  
+        </div>
+
+        <div class="info">
+            <p><strong>{{ 'Please' | translate }}!</strong> {{ 'Leave_a_comment' | translate }} <i class="far fa-comment-dots"></i></p>
+          </div>
+
+        <div class="sendMessage" *ngIf="info.token; else loggedOut">
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+              <label for="title">{{ 'Title' | translate }}</label>
+              <input type="text" class="form-control" id="title" required maxlength="20" minlength="4" appForbiddenName="bob"
+              [(ngModel)]="form.title" #title="ngModel" name="title" placeholder="Title">
+
+         <div *ngIf="title.invalid && f.submitted" class="alert alert-danger" [hidden]="submitted">
+      <div *ngIf="title.errors.required">
+         {{ 'Title_is_required' | translate }}
+      </div>
+      <div *ngIf="title.errors.minlength">
+       {{ 'Title_must_be_at_least_4_characters_long' | translate }}
+      </div>
+      <div *ngIf="title.errors.maxlength">
+        {{ 'Title_must_be_at_least_20_characters_long' | translate }}
+       </div>
+      <div *ngIf="title.errors.forbiddenName">
+         {{ 'Title_cannot_be_Bob' | translate }}
+      </div>
+        </div>
+          
+              <label for="message">{{ 'Subject' | translate }}</label>
+              <textarea type="text" id="message" name="message" maxlength="200"  minlength="4" [(ngModel)]="form.message" appForbiddenName="bob"
+               placeholder="Write something.." #message="ngModel" required style="height:200px"></textarea>
+              <div *ngIf="message.invalid && f.submitted" class="alert alert-danger" [hidden]="submitted">
+                <div *ngIf="message.errors.required">
+                   {{ 'Subject_is_required' | translate }}
+                </div>
+                <div *ngIf="message.errors.minlength">
+                 {{ 'Subject_must_be_at_least_4_characters_long' | translate }}
+                </div>
+                <div *ngIf="message.errors.maxlength">
+                  {{ 'Subject_must_be_at_least_200_characters_long' | translate }}
+                 </div>
+                  </div>
+          
+              <button class="btn btn-primary">{{ 'Send' | translate }}</button>
+            </form>
+        </div>
+
+        <div [hidden]="!submitted" style="text-align: center; padding-bottom: 20px;"> 
+          <div class="alert alert-success" role="alert">
+            <h4>{{ 'Comment_added_successfully_thanks' | translate }} </h4>
+          </div>
+         </div>
+   </div>
+</div>
+<ng-template #loggedOut>
+  <div class="alert alert-warning" style="margin-top: 15px;">
+          <strong>{{ 'You_must_Login' | translate }}!</strong> {{ 'to_write_a_comment' | translate }}.
+          <button class="btn btn-primary" (click)="loginPage()">{{ 'Login' | translate }}</button>
+        </div>
+</ng-template>

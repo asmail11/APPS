@@ -1,0 +1,34 @@
+<div class="loader" *ngIf="spinnerLoad"></div>
+<div *ngIf="!spinnerLoad">
+  <div class="panel panel-danger">
+    <div class="panel-heading"><h2><i class="fas fa-pizza-slice"></i> Type de cuisine trouver {{total}}</h2></div>
+    <div class="panel-body">
+      <div class="mt-3" *ngFor="let res of restaurants | paginate:{itemsPerPage: 12, currentPage:p}">
+        <div class="media border p-3">
+          <img src="https://www.tasteatlas.com/Images/Dishes/357efb62768748a8898836bcf186222c.jpg" alt="John Doe" class="mr-3 mt-3 rounded-circle"
+               style="width:70px;">
+          <div class="media-body">
+            <h4>Name <small><i>{{res.name}}</i></small></h4>
+            <p>City: {{res.borough}}</p>
+            <p style="margin-top: -8px;">Cuisine: {{res.cuisine}}</p>
+            <div class="media p-3">
+              <img src="https://amayei.nyc3.digitaloceanspaces.com/2019/04/830559308a3c9a864e02daee8b66177818e1ef77.jpg" alt="Jane Doe"
+                   style="width:100px; margin-top: 10px; margin-right: 10px; height: 55px;" class="img-thumbnail img-rounded">
+              <div class="media-body" style="margin-top: -16px;">
+                <h4>Address <small><i>{{res.address.street}}</i></small></h4>
+                <p>Coordonner: {{res.address.coord}}</p>
+                <p style="margin-top: -8px; text-decoration: underline;">Building: {{res.address.building}} Zipcode: {{res.address.zipcode}}</p>
+              </div>
+            </div>
+            <button type="button" class="btn btn-warning" style="float: right;" (click)="restaurantDetails(res.restaurant_id)">More destails</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-danger" style="margin-top: -22px;">
+    <div class="panel-body" style="padding-bottom: 0 !important;">
+      <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
+  </div>
+</div>

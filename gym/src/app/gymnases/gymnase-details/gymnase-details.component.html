@@ -1,0 +1,62 @@
+
+<div class="jumbotron">
+   <h2 class="display-4"><i class='fas fa-skiing'></i> More details </h2>
+   <hr>
+   <br>
+   <div class="row">
+            <div class="col-sm-4">
+              <div class="card text-dark bg-light">
+              <div class="card-header bg-dark text-center text-light"><h4> Informations</h4></div>
+                <div class="card-body ">
+                      <div class="list-group">
+                        <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-warning active">Name: {{g.nomGymnase}}
+                        <span class="badge badge-primary badge-pill"><i class='fas fa-address-book'></i></span>
+                        </a>
+                        <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-danger">Address: {{g.adresse}}
+                        <span class="badge badge-primary badge-pill"><i class='fas fa-home'></i></span>
+                        </a>
+                        <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-success"> City: {{g.ville}}
+                          <span class="badge badge-primary badge-pill"><i class='fas fa-mosque'></i></span>
+                        </a>
+                        <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-info">Surface: {{g.surface}}
+                        <span class="badge badge-primary badge-pill"><i class='fas fa-dice'></i></span>
+                        </a>
+                        <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-secondary disabled">Id: {{g.idGymnase}}
+                        <span class="badge badge-primary badge-pill"><i class='fas fa-user-astronaut'></i></span>
+                        </a>
+                      </div>
+                    <!--Ends here -->
+                </div>
+                <div class="card-footer bg-secondary border-danger text-right">
+                <a href="#" class="btn btn-info btn-md">home</a>
+                </div>
+              </div>
+            </div>
+
+       <div class="col-md-8">
+          <table class="table table-hover">
+              <thead class="thead-light">
+              <tr>
+                <th>Jour</th>
+                <th>Libelle</th>
+                <th>Horaire</th>
+                <th>Duree</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let s of g.seances">
+                <td>{{s.jour}}</td>
+                <td>{{s.libelle}}</td>
+                <td>{{s.horaire}}</td>
+                <td>{{s.duree}}</td>
+              </tr>
+            </tbody>
+            </table>
+
+
+      </div>
+   </div>
+   <br>
+   <hr style="margin-top: 0px; border: 1px solid #F48989;">
+ </div>
+

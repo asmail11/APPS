@@ -36,6 +36,7 @@ export class MovieDetailsComponent implements OnInit {
           data => {
             console.log('Error:', data);
             this.movie = data as Movie
+            
           }, error => console.log(error));
   }
   list(){

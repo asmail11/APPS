@@ -1,0 +1,38 @@
+
+<div class="container">
+<div class="jumbotron">
+   <h1 class="display-4"><i class='fas fa-skating'></i> Sportif skills </h1>
+      <hr>
+            <div class="row">
+              <div class="col-md-4">
+                  <ul class="list-group">
+                      <li class="list-group-item active"><i class='fas fa-dumbbell'></i> Jouer </li>
+                      <li class="list-group-item" *ngFor="let j of sportif.sports.jouer"> <span style="color:#645f5f;
+                        margin-right: 10px;"><i class='fas fa-golf-ball'></i></span>
+                        <span>{{ j | json}}</span> </li>
+                  </ul>
+              </div>
+              <div class="col-md-4">
+                  <ul class="list-group">
+                      <li class="list-group-item " style="background: #e67e22; color: white;"><i class='fas fa-football-ball'></i> Entrainer</li>
+                      <li class="list-group-item" *ngFor="let j of sportif.sports.entrainer"> <span style="color:#645f5f;
+                        margin-right: 10px;"><i class='fas fa-golf-ball'></i></span>
+                        <span>{{ j | json}}</span> </li>
+                  </ul>
+              </div>
+              <div class="col-md-4">
+                  <ul class="list-group">
+                      <li class="list-group-item" style="background: #8e44ad; color: white;"><i class='far fa-futbol'></i> Arbitrer</li>
+                      <li class="list-group-item" *ngFor="let j of sportif.sports.arbitrer"> <span style="color:#645f5f;
+                        margin-right: 10px;"><i class='fas fa-golf-ball'></i></span>
+                        <span>{{ j | json}}</span> </li>
+                  </ul>
+              </div>
+            </div>
+
+           <br>
+         <button class="btn btn-primary"> <a routerLink="home" style="color: aliceblue; float: left;">Home</a> </button>
+
+      </div>
+   </div>
+

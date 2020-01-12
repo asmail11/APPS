@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-3">
+      <h2 style="margin-top: 100px;"></h2>
+      <ul class="list-group">
+        <li class="list-group-item" style="background: #007bff !important; background: #007bff !important;
+              color: #FFF; font-size: 22px; font-family: initial;"><i class='fab fa-searchengin'></i> Find Salle: </li>
+        <li class="list-group-item">
+          <a [routerLink]="['/home/findByName']" routerLinkActive="router-link-active"><i class='fas fa-map-pin'></i> Find by name </a> </li>
+        <li class="list-group-item">
+          <a [routerLink]="['/home/findByCity']" routerLinkActive="router-link-active"><i class='fas fa-map-pin'></i> Find by city </a> </li>
+        <li class="list-group-item">
+          <a [routerLink]="['/home/findByDay']" routerLinkActive="router-link-active"><i class='fas fa-map-pin'></i> Find by day </a> </li>
+        <li class="list-group-item">
+          <a [routerLink]="['/home/findBySurface']" routerLinkActive="router-link-active"><i class='fas fa-map-pin'></i> Find by surface </a> </li>
+        <li class="list-group-item">
+          <a [routerLink]="['/home/findByHour']" routerLinkActive="router-link-active"><i class='fas fa-map-pin'></i> Find by hour </a> </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-9">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>

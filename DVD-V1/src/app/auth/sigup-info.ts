@@ -12,12 +12,13 @@ export class SignUpInfo {
    address: string;
    city: string;
    zip: number;
-   state: string;
+   state: string
+   active: boolean = false;
 
    role: string[];
 
     constructor(name:string, nameOnCard: string, cardNumber: string, expMonth: string, cvv: number, expYear: string, fullname: string,
-        email: string, address: string, city: string, zip: number, state: string, username: string, password: string){
+        email: string, address: string, city: string, zip: number, state: string, username: string, password: string, active: boolean){
             this.name = name;
             this.nameOnCard = nameOnCard;
             this.cardNumber = cardNumber;
@@ -32,6 +33,7 @@ export class SignUpInfo {
             this.state = state;
             this.username = username;
             this.password = password;
+            this.active = active;
         this.role = ['user'];
     }
 

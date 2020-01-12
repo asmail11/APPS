@@ -1,0 +1,37 @@
+<agm-map [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true" [zoomControl]="true" [(fitBounds)]='location.viewport'>
+  <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng" [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'></agm-marker>
+</agm-map>
+<div style="background: #74b9ff; padding: 10px">
+    <div class="form-group">
+      <label>Address Line 1
+      <input class='col-sm-10 form-control' type='text' [(ngModel)]='location.address_level_1' placeholder='Office, Apt, Home, Street'>
+      </label>
+    </div>
+    <div class="form-group">
+      <label>Address Line 2
+      <input class='col-sm-10 form-control'  [(ngModel)]='location.address_level_2' placeholder='City'/>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>State / Province / Region
+      <input class='col-sm-10 form-control'  [(ngModel)]='location.address_state' placeholder='State'>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Country
+      <input class='col-sm-10 form-control' [(ngModel)]='location.address_country' placeholder='State'>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Postal / Zip code
+        <input class='col-sm-10 form-control'  [(ngModel)]='location.address_zip' placeholder='Zip'>
+      </label>
+    </div>
+
+    <button (click)='updateOnMap()' type="submit" class="btn btn-danger">Search</button>
+
+</div>

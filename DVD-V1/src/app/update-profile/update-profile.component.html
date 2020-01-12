@@ -1,0 +1,141 @@
+
+      <div class="row">
+        <div class="col-100">
+          <div class="container" style="margin-bottom: 20px;">
+              <div [hidden]="!submitted" style="text-align: center; padding-bottom: 20px;">   
+                  <div class="alert alert-success" role="alert">
+                    <h4>{{'Information_updated_successfully' | translate }} </h4>
+                  </div>
+                 </div>
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            
+            <div class="row">
+                    <div class="col-50">
+                      <h3>{{'Billing_Address' | translate }}</h3>
+                     
+                          <label for="name">{{'Full_name' | translate }}</label>
+                          <input type="text" name="name" id="name" #name="ngModel" [(ngModel)]="updateProdile.name" required placeholder="John M. Doe" />
+                          <div *ngIf="f.submitted && name.invalid" class="alert alert-danger">
+                              <span *ngIf="name.errors.required">{{'Full_name_is_required' | translate }}</span>
+                            </div>
+
+                          <label for="email">{{'Email' | translate }}</label>
+                          <input type="email" name="email" id="email" #email="ngModel" [(ngModel)]="updateProdile.email" required placeholder="john@example.com"/>
+                           <div *ngIf="f.submitted && email.invalid" class="alert alert-danger">
+                              <div *ngIf="email.errors.required"> {{'Email_is_required' | translate }} </div>
+                              <span *ngIf="email.errors.email">{{'Email_must_be_a_valid_email_address' | translate }}</span>
+                          </div>
+  
+                          <label for="address">{{'Address' | translate }}</label>
+                          <input type="text" name="address" id="address" #address="ngModel" [(ngModel)]="updateProdile.address" required placeholder="542 15th Street"/>
+                          <div *ngIf="f.submitted && address.invalid" class="alert alert-danger">
+                              <span *ngIf="email.errors.required"> {{'Address_is_required' | translate }} </span>
+                            </div>
+  
+                          <label for="city">{{'City' | translate }}</label>
+                          <input type="text" name="city" id="city" #city="ngModel" [(ngModel)]="updateProdile.city" required placeholder="Paris"/>
+                          <div *ngIf="f.submitted && city.invalid" class="alert alert-danger">
+                              <span *ngIf="city.errors.required">{{'City_is_required' | translate }}</span>
+                            </div>
+  
+                          <div class="row">
+                              <div class="col-50">
+                                  <label for="state">{{'State' | translate }}</label>
+                                  <input type="text" name="state" id="state" #state="ngModel" [(ngModel)]="updateProdile.state" required placeholder="FR"/>
+                                  <div *ngIf="f.submitted && state.invalid" class="alert alert-danger">
+                                      <span *ngIf="city.errors.required">{{'State_is_required' | translate }}</span>
+                                    </div>
+
+                              </div>
+                              <div class="col-50">
+                                  <label for="city">{{'Zip' | translate }}</label>
+                          <input type="number" name="zip" id="zip" #zip="ngModel" [(ngModel)]="updateProdile.zip" min="1" max="5" required placeholder="75000"/>
+                          <div *ngIf="f.submitted && zip.invalid" class="alert alert-danger">
+                              <span *ngIf="zip.errors.required">{{'Zip_is_required' | translate }}</span>
+                            </div>
+
+                              </div>
+                            </div>    
+                            <div class="row">
+                                <div class="col-50">
+                        
+                                    <input type="text" name="username" id="username" #username="ngModel" [(ngModel)]="updateProdile.username" required placeholder="Username"/>
+                                    <div *ngIf="f.submitted && username.invalid" class="alert alert-danger">
+                                        <span *ngIf="username.errors.required">{{'Username_is_required' | translate }}</span>
+                                      </div>
+                                </div>
+                                <div class="col-50">
+                    
+                            <input type="password" name="password" id="password" #password="ngModel" [(ngModel)]="updateProdile.password" max="5" required placeholder="Password"/>
+                            <div *ngIf="f.submitted && password.invalid" class="alert alert-danger">
+                                <span *ngIf="password.errors.required">{{'Password_is_required' | translate }}</span>
+                              </div>
+                                </div>
+                              </div>            
+                        
+                    </div>
+          
+                  
+                    <div class="col-50">
+                      <h3>{{'Payment' | translate }}</h3>
+                      <label for="fname">{{'Accpted_cards' | translate }}</label>
+                      <div class="icon-container">
+                        <i class="fa fa-cc-visa" style="color:navy;"></i>
+                        <i class="fa fa-cc-amex" style="color:blue;"></i>
+                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                        <i class="fa fa-cc-discover" style="color:orange;"></i>
+                      </div>
+  
+                      <label for="nameOnCard">{{'Name_on_card' | translate }}</label>
+                      <input type="text" name="nameOnCard" id="nameOnCard" #nameOnCard="ngModel" [(ngModel)]="updateProdile.nameOnCard" required placeholder="John More Doe"/>
+                      <div *ngIf="f.submitted && nameOnCard.invalid" class="alert alert-danger">
+                          <span *ngIf="nameOnCard.errors.required">{{'Name_on_card_is_required' | translate }}</span>
+                        </div>
+                      <label for="cardNumber">{{'Credit_card_number' | translate }}</label>
+                      <input type="text" name="cardNumber" id="cardNumber" #cardNumber="ngModel" [(ngModel)]="updateProdile.cardNumber" required placeholder="1111-2222-3333-4444"/>
+                      <div *ngIf="f.submitted && cardNumber.invalid" class="alert alert-danger">
+                          <span *ngIf="cardNumber.errors.required">{{'Credit_card_number_is_required' | translate }}</span>
+                        </div>
+
+                      <label for="expMonth">{{'expMonth' | translate }}</label>
+                      <input type="text" name="expMonth" id="expMonth" #expMonth="ngModel" [(ngModel)]="updateProdile.expMonth" required placeholder="September"/>
+                      <div *ngIf="f.submitted && expMonth.invalid" class="alert alert-danger">
+                          <span *ngIf="expMonth.errors.required">{{'Exp_Month_is_required' | translate }}</span>
+                        </div>
+                       <div class="row">
+                        <div class="col-50">
+                            <label for="expYear">{{'expYear' | translate }}</label>
+                            <input type="text" name="expYear" id="expYear" #expYear="ngModel" [(ngModel)]="updateProdile.expYear" required placeholder="2019"/>
+                            <div *ngIf="f.submitted && expYear.invalid" class="alert alert-danger">
+                                <span *ngIf="expYear.errors.required">{{'expYear_is_required' | translate }}</span>
+                              </div>
+                        </div>
+                        <div class="col-50">
+                            <label for="cvv">Cvv</label>
+                            <input type="number" name="cvv" id="cvv" #cvv="ngModel" [(ngModel)]="updateProdile.cvv" min="1" max="3" required placeholder="123"/>
+                            <div *ngIf="f.submitted && cvv.invalid" class="alert alert-danger">
+                                <span *ngIf="cvv.errors.required">{{'Cvv_is_required' | translate }}</span>
+                              </div>
+                        </div>
+                      </div> 
+
+                      <div class="row">
+                          <div class="col-50">
+                           <button class="btn btn-danger" (click)="navigateToLogin()"> {{'Cancel' | translate }} </button>
+                        </div>
+                        <div class="col-50">
+                          <button class="btn btn-primary" type="submit">{{'Update' | translate }}</button>
+                         </div>
+                        </div> 
+  
+                    </div> 
+                    
+                        
+  
+                  </div>  
+            </form>
+        
+          </div>
+        </div>
+      </div>
+  

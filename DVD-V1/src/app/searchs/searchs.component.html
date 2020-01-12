@@ -1,0 +1,67 @@
+
+    <div [hidden]="orderFinished">
+            <form class="example" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <input type="text" placeholder="{{'Search' | translate }}" #search="ngModel" name="search" 
+                    id="name" required [(ngModel)]="name" name="name">
+                   <button type="submit"><i class="fa fa-search"></i></button>
+                   </form>
+    </div>
+
+        <div class="container" [hidden]="orderFinished" [hidden]="!submitted">
+                <div class="row">
+                  <div class="col-lg-4">
+                      <h2 class="title-page"> {{'Product_found' | translate }}</h2>
+                  </div>
+                </div>
+              </div>
+             <div class="row" style="padding-bottom: 60px;" [hidden]="!submitted">
+                 <div class="col-md-9" [hidden]="orderFinished">
+                        <div class="row card-deck" style="margin-top: 20px">
+                                <div class="col-lg-4 col-md-6 mb-4" *ngFor="let order of productOrders let i = index;">
+                                    <div class="card text-center">
+                                        <div class="card-header" style="background-color: #bdc3c7;">
+                                            <h4>{{order.product.name}}</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="#"><img class="card-img-top img-thumbnail" style="width: 200px; height: 300px" src={{order.product.pictureUrl}} alt="image"></a>
+    
+                                            <h5 class="card-title" id="price">{{'Price' | translate }} = {{order.product.price}}$ 
+                                                    <button id="btn" (click)=showUndoBtn(i) (click)="productInfo(order.product.id)"> <i class="fas fa-info-circle"></i></button> </h5>
+                                                    <div class="modal" [attr.id]="'undoBtn'+i" *ngIf="showBtn===i && showMyContainerInfo" class="editBtn" md-raised-button color="primary">                           
+                                                            <div class="modal-content">
+                                                           <span>{{description}}</span>
+                                                        </div>
+                                                    </div>
+
+                                         <hr>
+                                            <div class="row">
+                                                <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">
+                                                    <input type="number" min="0" class="form-control" [(ngModel)]=order.quantity>
+                                                </div>
+                                                <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">
+                                                    <button class="btn btn-primary" (click)="addToCart(order)"
+                                                            [disabled]="order.quantity <= 0">{{'Add_To_Cart' | translate }}
+                                                    </button>
+                                                    
+                                                </div>
+                                                <div class="col-12" *ngIf="isProductSelected(order.product)">
+                                                    <button class="btn btn-danger btn-block active"
+                                                            (click)="removeFromCart(order)">{{'Remove_From_Cart' | translate }}
+                                                    </button>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                 </div>
+                 <div class="col-md-3">
+                     <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
+                                        [hidden]="orderFinished"></app-shopping-cart>
+                 </div>
+                
+                 <div class="col-md-6 offset-3">
+                     <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
+                 </div>
+             </div>

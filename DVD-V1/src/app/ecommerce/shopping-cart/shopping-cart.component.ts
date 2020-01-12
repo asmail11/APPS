@@ -5,6 +5,7 @@ import { EcommerceService } from '../services/ecommerce.service';
 import { ProductOrder } from '../models/product-order.model';
 import { Item } from 'src/app/delivry/Item';
 import { ITEMS } from 'src/app/delivry/ITEMS';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -26,7 +27,7 @@ export class ShoppingCartComponent implements OnInit {
 
     @Output() onOrderFinished: EventEmitter<boolean>;
 
-    constructor(private ecommerceService: EcommerceService) {
+    constructor(private ecommerceService: EcommerceService, private router: Router) {
         this.total = 0;
         this.orderFinished = false;
         this.onOrderFinished = new EventEmitter<boolean>();
@@ -102,6 +103,9 @@ export class ShoppingCartComponent implements OnInit {
       onItemChange(item: any){
         this.getSelecteditem();
         this.priceDelivery = item.price;
+      }
+      commentPage(){
+        this.router.navigate(['comment']);
       }
 
 }

@@ -1,11 +1,12 @@
 <div class="container" [hidden]="orderFinished">
        <div class="row">
          <div class="col-lg-4">
-             <h2 class="title-page"><i class="fab fa-dropbox"></i> Products <i class="fab fa-dropbox"></i></h2>
+             <h2 class="title-page"><i class="fab fa-dropbox"></i> {{ 'Products' | translate }} <i class="fab fa-dropbox"></i></h2>
          </div>
        </div>
      </div>
-    <div class="row">
+     <hr>
+    <div class="row" style="padding-bottom: 40px;">
         <div class="col-md-9">
             <app-products #productsC [hidden]="orderFinished"></app-products>
         </div>

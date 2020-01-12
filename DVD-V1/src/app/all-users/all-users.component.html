@@ -1,0 +1,23 @@
+<table>
+  <tr>
+  <th>ID</th>
+  <th>Users</th>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Delete</th>
+  </tr>
+  <tr *ngFor="let user of users | async">
+  <td>{{user.id}}</td>
+  <td>
+    <span class="button is-small btn-danger" style="padding: 4px 10px;" *ngIf='!user.active'>User</span>
+    <span class="button is-small btn-primary" *ngIf='user.active'>Admin</span>
+  </td>
+  <td>{{user.name}}</td>
+  <td>{{user.email}}</td>
+  <td>
+    <button class="btn btn-link" type="submit" style="color: coral" (click)="deleteUser(user.id)">
+      <i class="glyphicon glyphicon-remove"></i> Delete this account    
+     </button>
+  </td>
+  </tr>
+</table>

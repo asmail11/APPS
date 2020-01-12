@@ -1,71 +1,74 @@
-<div class="container" *ngIf="info.token; else loggedOut">
-        <div class="row profile">
-            <div class="col-md-3" style="background: aliceblue; padding: 20px;">
-                <div class="profile-sidebar">
-                    <!-- SIDEBAR USERPIC -->
-                    <div class="profile-userpic">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKqXeFw93-DRzIVaPnvDAzMDBVfGqpLr_JsIyRgiNFB2XP16uj" class="img-responsive" alt="">
-                    </div>
-                    <!-- END SIDEBAR USERPIC -->
-                    <!-- SIDEBAR USER TITLE -->
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">
-                            {{name}}
-                        </div>
-                        <div class="profile-usertitle-job">
-                            {{email}}
-                        </div>
-                    </div>
-                    <!-- END SIDEBAR USER TITLE -->
-                    <!-- SIDEBAR BUTTONS -->
-                    <div class="profile-userbuttons">
-                        <button type="button" class="btn btn-success btn-sm" (click)='updateUser()'>Update</button>
-                        <button type="button" class="btn btn-danger btn-sm" (click)="logout()">Logout</button>
-                    </div>
-                    <!-- END SIDEBAR BUTTONS -->
-                    <!-- SIDEBAR MENU -->
-                    <div class="profile-usermenu">
-                        <ul class="nav">
-                            <li class="active">
-                                <a>
-                                <i class="glyphicon glyphicon-home"></i>
-                                {{address}} </a>
-                            </li>
-                            <li>
-                                <a>
-                                <i class="glyphicon glyphicon-user"></i>
-                                {{city}} </a>
-                            </li>
-                            <li>
-                                <a>
-                                <i class="glyphicon glyphicon-ok"></i>
-                                {{zip}} </a>
-                            </li>
-                            <li>
-                                <a>
-                                <i class="glyphicon glyphicon-flag"></i>
-                                {{state}} </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- END MENU -->
-                </div>
+<div *ngIf="info.token; else loggedOut">
+        <div class="panel panel-info" style="margin-top: 14px;">
+                <div class="panel-heading">
+                   <p style="font-size: 18px; font-weight: bold;"><fa name="gamepad" animation="spin"></fa> <i class="glyphicon glyphicon-user"></i> {{'Profile' | translate }} </p>
+                </div> 
+                <div class="panel-body">
+                        <div class="row profile">
+                                <div class="col-md-5" >
+                                    <div class="profile-sidebar">
+                                    
+                                        <div class="profile-userpic">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKqXeFw93-DRzIVaPnvDAzMDBVfGqpLr_JsIyRgiNFB2XP16uj" class="img-responsive" alt="">
+                                        </div>
+                                  
+                                        <div class="profile-usertitle">
+                                            <div class="profile-usertitle-name">
+                                                {{name}}
+                                            </div>
+                                            <div class="profile-usertitle-job">
+                                                {{email}}
+                                            </div>
+                                        </div>
+                               
+                                        <div class="profile-userbuttons">
+                                            <button type="button" class="btn btn-success btn-sm" (click)='updateUser()'>{{'Update' | translate }}</button>
+                                            <button type="button" class="btn btn-danger btn-sm" (click)="logout()">{{'Logout' | translate }}</button>
+                                        </div>
+                                   
+                                      
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                        <div class="profile-usermenu">
+                                                <ul class="nav" style="display: block;">
+                                                    <li class="active">
+                                                        <a>
+                                                        <i class="glyphicon glyphicon-home"></i>
+                                                        {{address}} </a>
+                                                    </li>
+                                                    <li>
+                                                        <a>
+                                                        <i class="glyphicon glyphicon-cog"></i>
+                                                        {{city}} </a>
+                                                    </li>
+                                                    <li>
+                                                        <a>
+                                                        <i class="glyphicon glyphicon-ok"></i>
+                                                        {{zip}} </a>
+                                                    </li>
+                                                    <li>
+                                                        <a>
+                                                        <i class="glyphicon glyphicon-flag"></i>
+                                                        {{state}} </a>
+                                                    </li>
+                                                    <li>
+                                                         <button class="btn btn-link" type="submit" style="color: coral" (click)="deleteUser(id)">
+                                                         <i class="glyphicon glyphicon-remove"></i> {{'Delete_your_account' | translate }}    
+                                                        </button>
+                                                        </li>
+                                                </ul>
+                                            </div>
+                                </div>
+                            
+                            </div> 
+                </div>  
             </div>
-            <div class="col-md-9">
-                <div class="profile-content">
-                   Some user related content goes here...
-                </div>
-            </div>
-        </div>
     </div>
-    <center>
-    <strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
-    </center>
-    <br>
-    <br>
+ 
 
     <ng-template #loggedOut>
-        <div class="alert alert-warning">
-            Please Login.
-        </div>     
+        <div class="alert alert-danger" style="margin-top: 10px;">
+                {{'Please_Login' | translate }}. <button class="btn btn-link" (click)="navigateToLogin()"> {{'Login' | translate }} </button>
+          </div>    
      </ng-template>

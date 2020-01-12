@@ -1,0 +1,105 @@
+
+
+  <div class="loader" *ngIf="spinnerLoad"></div>
+  <div *ngIf="!spinnerLoad">
+
+  <div class="row">
+    <div class="panel panel-primary">
+      <div class="panel-heading">  <p class="title" style="color: #FFFFFF"> <i class="fas fa-pepper-hot"></i>
+        Parcourir Montreuil par type de cuisine </p></div>
+      <div class="panel-body">
+        <div class="cuisine">
+          <div class="col-md-3" *ngFor="let cuisine of filteredData">
+            <img src="https://i.ibb.co/6HKRRxn/salade.jpg" alt="img" class="image-cuisine">
+            <div class="overlay" (click)="restaurantTypeCuisine(cuisine.cuisine)">{{cuisine.cuisine}}</div>
+          </div>
+        </div>
+        <button class="btn-read-more  info-read-more" (click)="getAllCuisine()" *ngIf="showAllCuisine">Read more</button>
+        <button class="btn-read-more  info-read-more" (click)="getAllCuisine2()" *ngIf="hideCuisine">Read more</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="panel panel-warning">
+      <div class="panel-heading"> <p class="title"><i class="fas fa-pizza-slice"></i> Best restaurants </p> </div>
+      <div class="panel-body">
+          <div class="col-md-3" *ngFor="let res of restaurantsReserve">
+            <div class="card" style="width: 18rem;">
+              <img src="https://media.gettyimages.com/photos/different-types-of-food-on-rustic-wooden-table-picture-id861188910?s=612x612" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size: 13px;">{{res.name}}</h5>
+                <p class="card-text">{{res.borough}}, {{res.cuisine}}</p>
+                <button (click)="restaurantDetails(res.restaurant_id)" class="btn btn-warning">Trouver une table</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="panel panel-danger">
+      <div class="panel-heading"> <p class="title"><i class="fas fa-hamburger"></i> Offres Spéciales Burger King </p></div>
+      <div class="panel-body">
+
+      <div class="card" *ngFor="let burger of restaurantsBurgerKings | paginate:{itemsPerPage: 4, currentPage:p}" style="margin-bottom: 15px;">
+        <h5 class="card-header" style="margin-top: 0;">{{burger.name}}</h5>
+        <div class="card-body">
+              <div class="col-md-4">
+                <img src="https://www.toute-la-franchise.com/images/zoom/burger-kink.jpg" alt="img" class="img-thumbnail">
+                <h5 class="card-title">Address: {{burger.borough}}</h5>
+                <p class="card-text"> Rue {{burger.address.street}}, {{burger.address.zipcode}}, {{burger.address.building}}</p>
+                <h6>Rating</h6>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span><i class="fas fa-star-half-alt"></i></span><br>
+               <!-- <span style="padding: 5px; color: #FFFFFF; background: #e67e22;" class="badge badge-secondary"> {{burger.address.coord}}</span>-->
+              </div>
+             <div class="col-md-8">
+               <div class="row">
+                 <div class="col-xs-6">
+                   <ul class="list-group">
+                     <li class="list-group-item disabled" aria-disabled="true">Score and Grades </li>
+                     <li class="list-group-item" *ngFor="let g of burger.grades">Score >
+                       {{g.score}} Grade > {{g.grade}}
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+
+               <button (click)="restaurantDetails(burger.restaurant_id)" class="btn btn-danger">Réserver</button>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+      <div class="panel panel-danger" style="margin-top: -22px;">
+        <div class="panel-body" style="padding-bottom: 0 !important;">
+          <pagination-controls (pageChange)="p=$event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading"><p class="title"><i class="fas fa-hamburger"></i> New York Restaurants </p></div>
+      <div class="panel-body">
+          <div class="col-md-3" *ngFor="let newYork of restaurantsNewYork">
+            <div class="newYorkRestaurant">
+              <img src="https://media-cdn.tripadvisor.com/media/photo-s/0d/61/34/d5/new-york-restaurant.jpg" alt="Nature" style="width:100%;" class="img-thumbnail">
+              <div class="text-block">
+                <h4>{{newYork.address.zipcode}}</h4>
+                <p (click)="restaurantDetails(newYork.restaurant_id)" style="font-size: 12px;">{{newYork.name}} <i class="fas fa-eye-slash"></i> </p>
+              </div>
+            </div>
+          </div>
+        <button class="btn-read-more  info-read-more" (click)="readMoreNewYork()">Read more</button>
+        </div>
+      </div>
+    </div>
+
+    <br><hr>
+  </div>

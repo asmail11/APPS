@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrdersComponent } from './orders/orders.component';
+import { EcommerceService } from './services/ecommerce.service';
 
 @Component({
   selector: 'app-ecommerce',
@@ -41,4 +42,5 @@ export class EcommerceComponent implements OnInit {
       this.shoppingCartC.reset();
       this.ordersC.paid = false;
   }
+
 }

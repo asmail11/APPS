@@ -41,4 +41,5 @@ export class GamesComponent implements OnInit {
       this.shoppingCartC.reset();
       this.ordersC.paid = false;
   }
+ 
 }

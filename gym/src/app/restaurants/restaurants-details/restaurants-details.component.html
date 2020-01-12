@@ -1,0 +1,59 @@
+
+  <div class="jumbotron">
+    <h1 class="display-4"> <i class="fas fa-utensils"></i> Restaurant details </h1>
+    <hr>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+          <span>
+          <i class="fas fa-home"></i> Name: {{restaurant.name}} <br>
+          <i class="fab fa-accusoft"></i> Cuisine: {{restaurant.cuisine}} <br>
+          <i class="fas fa-city"></i> Borough: {{restaurant.borough}}
+        </span> <hr>
+        <table class="table table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th>Grade</th>
+            <th>Score</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let s of restaurant.grades">
+            <td>{{s.grade}}</td>
+            <td>{{s.score}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="col-sm-4">
+        <div class="card text-dark bg-light">
+          <div class="card-header bg-dark text-center text-light"><h4> Informtation </h4></div>
+          <div class="card-body ">
+            <div class="list-group">
+              <span>Address: {{restaurant.address.street}}</span>
+              <span>Building: {{restaurant.address.building}} </span>
+              <span>Zip code: {{restaurant.address.zipcode}}</span>
+<!--
+              <div>
+                <br>
+                <span style="padding: 5px; color: #16a085;"> <i class="fas fa-thumbs-up"></i> +{{plusStr}}</span>
+                <br>
+                <span style="padding: 5px; color: #d35400;"><i class="fas fa-thumbs-down"></i> {{minusStr}}</span>
+              </div>
+              -->
+            </div>
+            <!--Ends here -->
+          </div>
+          <div class="card-footer bg-secondary border-danger text-right">
+            <a href="#" class="btn btn-info btn-md">home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <hr style="margin-top: 0px; border: 1px solid #F48989;">
+  </div>
+
+
+

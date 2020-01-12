@@ -1,8 +1,13 @@
 
  <app-navbar></app-navbar>
-
-<div class="container" style="border-radius: 10px;">
+ <div id='showMe'>  
+   <button type="button" (click)="commentPage()" 
+   title="Comments" style="background: transparent; border: none; font-size: 80px">
+   <i class="far fa-comment-dots"></i></button>
+ </div>
+<div class="container" style="border-radius: 10px; padding-bottom: 20px;">
   <router-outlet></router-outlet>
 </div>
+
 
 <app-footer></app-footer>

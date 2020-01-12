@@ -1,0 +1,22 @@
+<h2><i class="fas fa-dumbbell" style='font-size:48px;'></i> All Gymnasses {{allNumber}}</h2><hr>
+
+<table class="one">
+  <tr>
+    <th>Nom</th>
+    <th>Addrese</th>
+    <th>Ville</th>
+    <th>Surface</th>
+    <th>Details</th>
+  </tr>
+  <tr *ngFor="let gym of gymnases | paginate:{itemsPerPage: 6, currentPage:p} ">
+    <td>{{gym.nomGymnase}}</td>
+    <td>{{gym.adresse}}</td>
+    <td>{{gym.ville}}</td>
+    <td>{{gym.surface}}</td>
+    <td (click)="gymanseDetails(gym.idGymnase)" title="More details">
+      <i class='fas fa-paperclip' style='font-size:20px;color:#007bff !important; cursor: pointer;'></i></td>
+  </tr>
+</table>
+<div id="pagination">
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>

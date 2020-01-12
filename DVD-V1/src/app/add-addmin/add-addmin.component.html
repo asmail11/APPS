@@ -1,0 +1,50 @@
+<div *ngIf="isSignedUp; else signupForm" class="alert alert-success" style="padding-top: 8px;">
+    {{'A_new_admin_added_successfully' | translate }}
+  </div>
+
+
+  <ng-template #signupForm>
+    <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+       {{'Signup_failed' | translate }}<br/>{{errorMessage}}
+    </div>
+
+
+          <div class="row" style="background: linear-gradient(to right, #d1d8e0,#D980FA, #c8d6e5, #9980FA, #d1d8e0); margin-bottom: -20px">
+              <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+
+                            <h3 style="margin-top: 10px !important;"> {{'Add_admin' | translate }}  </h3>
+
+                                <input type="text" name="name" [(ngModel)]="form.name" #name="ngModel" required placeholder="{{'Name' | translate }}" />
+                                <div *ngIf="f.submitted && name.invalid" class="alert alert-danger">
+                                  <span *ngIf="name.errors.required">{{'Full_name_is_required' | translate }}</span>
+                                </div>
+
+                                <input type="email" name="email" [(ngModel)]="form.email" #email="ngModel" required placeholder="{{'Email' | translate }}"/>
+                                <div *ngIf="f.submitted && email.invalid" class="alert alert-danger">
+                                  <span *ngIf="email.errors.required"> {{'Email_is_required' | translate }} </span>
+                                  <span *ngIf="email.errors.email">{{'Email_must_be_a_valid_email_address' | translate }}</span>
+                                </div>
+
+
+                                <input type="text" name="username" [(ngModel)]="form.username" #username="ngModel" required placeholder="{{'Username' | translate }}"/>
+                                <div *ngIf="f.submitted && username.invalid" class="alert alert-danger">
+                                 <span *ngIf="username.errors.required">{{'Username_is_required' | translate }}</span>
+                                 </div>
+
+
+                                  <input type="password" name="password" [(ngModel)]="form.password" max="5" #password="ngModel" required placeholder="{{'Password' | translate }}"/>
+                                  <div *ngIf="f.submitted && password.invalid" class="alert alert-danger">
+                                    <span *ngIf="password.errors.required">{{'Password_is_required' | translate }}</span>
+                                  </div>
+
+                                  <button class="btn btn-primary"> {{'Register' | translate }} </button>
+
+                  </form>
+                </div>
+               <div class="col-lg-4"></div>
+            </div>
+
+      </ng-template>

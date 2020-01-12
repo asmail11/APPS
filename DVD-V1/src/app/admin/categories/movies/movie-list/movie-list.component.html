@@ -1,0 +1,23 @@
+
+<table class="table table-striped-bordered" *ngIf="movies">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>{{ 'Name' | translate }}</th>
+        <th>{{ 'Price' | translate }}</th>
+        <th>{{ 'Action' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let movie of movies | async">
+          <td>{{movie.id}}</td>
+          <td>{{movie.name}}</td>
+          <td>{{movie.price}}$</td>
+          <td><button (click)="deleteMovie(movie.id)" class="btn btn-danger">{{ 'Delete' | translate }}</button>
+            <button (click)="updateMovie(movie.id)" class="btn btn-warning" style="margin-left: 8px">{{ 'Update' | translate }}</button>
+            <button (click)="movieDetails(movie.id)" class="btn btn-info" style="margin-left: 8px">{{ 'Details' | translate }}</button>
+        </td>
+        </tr>
+      </tbody>
+  </table>
+  <button (click)="createMovie()" class="btn btn-primary" style="margin-left: 8px">{{ 'Create_a_new' | translate }}</button>

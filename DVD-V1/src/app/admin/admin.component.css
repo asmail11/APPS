@@ -3,9 +3,6 @@ body {
   }
   
   /* Profile container */
-  .profile {
-    margin: 20px 0;
-  }
   
   /* Profile sidebar */
   .profile-sidebar {
@@ -16,8 +13,8 @@ body {
   .profile-userpic img {
     float: none;
     margin: 0 auto;
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
     -webkit-border-radius: 50% !important;
     -moz-border-radius: 50% !important;
     border-radius: 50% !important;
@@ -25,14 +22,14 @@ body {
   
   .profile-usertitle {
     text-align: center;
-    margin-top: 20px;
   }
   
   .profile-usertitle-name {
     color: #5a7391;
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 7px;
+    margin-bottom: 2px;
+    margin-top: 5px;
   }
   
   .profile-usertitle-job {
@@ -58,11 +55,11 @@ body {
   .profile-userbuttons .btn:last-child {
     margin-right: 0px;
   }
-      
-  .profile-usermenu {
-    margin-top: 30px;
-  }
-  
+.profile-usermenu{
+ margin-top: 15px;
+ border: 1px solid aliceblue;
+ padding: 10px;
+    }  
   .profile-usermenu ul li {
     border-bottom: 1px solid #f0f4f7;
   }
@@ -104,3 +101,96 @@ body {
     background: #fff;
     min-height: 460px;
   }
+
+  /* Dashboard */
+
+#homePage .tabs-left, .tabs-right {
+  border-bottom: none;
+  padding-top: 2px;
+}
+
+#homePage .tabs-right {
+  border-left: 1px solid #ddd;
+}
+#homePage .tabs-left>li, .tabs-right>li {
+  float: none;
+  margin-bottom: 2px;
+}
+#homePage .tabs-left>li {
+  margin-right: -1px;
+}
+#homePage .tabs-right>li {
+  margin-left: -1px;
+}
+#homePage .tabs-left>li.active>a,
+#homePage .tabs-left>li.active>a:hover,
+#homePage .tabs-left>li.active>a:focus {
+  background: linear-gradient(to right, #3848A2, #007bff, #039BE6, #028BCF, #3F51B5);
+  color: #ffffff;
+}
+
+#homePage .tabs-right>li.active>a,
+#homePage .tabs-right>li.active>a:hover,
+#homePage .tabs-right>li.active>a:focus {
+  border-bottom: 1px solid #ddd;
+  border-left-color: transparent;
+}
+#homePage .tabs-left>li>a {
+  border-radius: 4px 0 0 4px;
+  margin-right: 0;
+  display:block;
+}
+#homePage .tabs-right>li>a {
+  border-radius: 0 4px 4px 0;
+  margin-right: 0;
+}
+#homePage .sideways {
+  margin-top:50px;
+  border: none;
+  position: relative;
+}
+#homePage .sideways>li {
+  height: 20px;
+  width: 120px;
+  margin-bottom: 100px;
+}
+#homePage .sideways>li>a {
+  border-bottom: 1px solid #ddd;
+  border-right-color: transparent;
+  text-align: center;
+  border-radius: 4px 4px 0px 0px;
+}
+#homePage .sideways>li.active>a,
+#homePage .sideways>li.active>a:hover,
+#homePage .sideways>li.active>a:focus {
+  border-bottom-color: transparent;
+  border-right-color: #ddd;
+  border-left-color: #ddd;
+}
+#homePage .sideways.tabs-left {
+  left: -50px;
+}
+#homePage .sideways.tabs-right {
+  right: -50px;
+}
+#homePage .sideways.tabs-right>li {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+#homePage .sideways.tabs-left>li {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+#homePage .showTab{
+  display: block !important;
+}
+#homePage .hideTab{
+  display: none !important;
+}
+

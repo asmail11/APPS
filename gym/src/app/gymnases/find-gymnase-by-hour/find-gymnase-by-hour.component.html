@@ -1,0 +1,34 @@
+
+    <h2> Find by horaire </h2> <br>
+    <form class="example" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <input type="text" placeholder="Find by horaire"  name="horaire"
+        id="horaire" required [(ngModel)]="horaire">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+
+<br>
+    <div *ngIf="total>1">
+ <div *ngIf="submitted">
+  <h2 style="margin-bottom: -10px;">{{total}} Salle trovée par horaires <i class='far fa-clock'></i> {{horaire}} </h2>
+  <hr>
+
+   <div class="col-md-4" *ngFor="let gym of gymnases" style="margin-bottom: 10px;">
+      <div class="card" style="width: 100%;">
+          <img class="card-img-top" src="https://medias.pourlascience.fr/api/v1/images/view/5d1b663a8fe56f77c8671165/wide_1300/image.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Name: {{gym.nomGymnase}} </h5>
+            <ul class="list-group">
+                <li class="list-group-item">Address: {{gym.adresse}} </li>
+                <li class="list-group-item">Ville: {{gym.ville}}</li>
+                <li class="list-group-item">Surface: {{gym.surface}}</li>
+              </ul>
+              <a (click)="gymanseDetails(gym.idGymnase)" class="btn btn-primary">More details</a>
+          </div>
+        </div>
+   </div>
+ </div>
+ </div>
+
+    <div *ngIf="total<=0" class="alert alert-danger">
+      <h2>No Result found</h2>
+    </div>

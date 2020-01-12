@@ -1,0 +1,77 @@
+
+#comonent .containers {
+    border: 1px solid #ddd;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 16px;
+    margin: 16px 0
+  }
+  
+  #comonent .containers::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  #comonent .containers img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+  #comonent .containers span {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  #comonent #content-comonent {
+    background: #ffffff;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    color: #535353;
+    margin-left: 100px;
+    border-radius: 10px;
+  }
+  @media (max-width: 500px) {
+    #comonent .containers {
+        text-align: center;
+    }
+    #comonent .containers img {
+        margin: auto;
+        float: none;
+        display: block;
+    }
+  }
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .sendMessage {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  .info {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+    padding: 4px 12px;
+  }

@@ -23,14 +23,14 @@
         <div *ngIf="paid">
             <div class="columns">
                     <ul class="price">
-                      <li class="header" role="alert" class="alert alert-success" style="margin-bottom: 1px;" ><strong>Congratulation!</strong> You successfully made the order.</li>
+                      <li class="header" role="alert" class="alert alert-success" style="margin-bottom: 1px;" ><strong>Congratulation!</strong> You successfully made the order. <strong>Bill is</strong> </li>
                       <li class="grey" style="color: #c0392b">Total amount: ${{ total }} With delivry</li>
                       <li> <strong>Name: </strong>  {{name}} </li>
                       <li> <strong>Email: </strong> {{email}}</li>
                       <li> <strong>Address: </strong> {{address}} - {{zip}} </li>
                       <li> <strong>City: </strong> {{city}} - <strong>State: </strong>  {{state}} </li>
                       <li> {{newDate | date: 'yyyy-MM-dd hh:mm' }}  </li>
-                      <li class="grey"><a href="#" class="button">Finished</a></li>
+                      <li class="grey" style="cursor: pointer; color: #FFF"><a (click)="goToHome()" class="button">Finished</a></li>
                     </ul>
                   </div>
            
@@ -40,7 +40,7 @@
 <ng-template #loggedOut>
         <div class="alert alert-warning" style="margin-top: 15px;">
                 <strong>You must login!</strong> To complete your chopping.
-                <button class="btn btn-success" (click)="goToHome()">Login</button>
+                <button class="btn btn-success" (click)="goToLogin()">Login</button>
               </div>
  </ng-template>
 

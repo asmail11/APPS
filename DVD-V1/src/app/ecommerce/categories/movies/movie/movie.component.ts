@@ -4,6 +4,8 @@ import { Product } from 'src/app/ecommerce/models/product.model';
 import { Subscription } from 'rxjs';
 import { ProductOrders } from 'src/app/ecommerce/models/product-orders.model';
 import { EcommerceService } from 'src/app/ecommerce/services/ecommerce.service';
+import { MovieServiceService } from 'src/app/ecommerce/services/movie-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,8 +21,11 @@ export class MovieComponent implements OnInit {
   private shoppingCartOrders: ProductOrders;
   sub: Subscription;
   productSelected: boolean = false;
+  description: string;
+  showMyContainerInfo: boolean = false;
 
-  constructor(private ecommerceService: EcommerceService) {
+  constructor(private ecommerceService: EcommerceService, private movieService: MovieServiceService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -81,6 +86,19 @@ export class MovieComponent implements OnInit {
       this.loadOrders();
       this.productSelected = false;
   }
+  productInfo(id: number){
+    this.movieService.getMovieById(id)
+    .subscribe(data => {
+        this.description = data.description;
+    });
+    this.showMyContainerInfo = !this.showMyContainerInfo;   
+ }
+ showBtn=-1;
 
-
+showUndoBtn(index){
+this.showBtn=index;
+}
+sngleProduct(id: number) {
+    this.router.navigate(['sangle/product', id]);
+  }
 }

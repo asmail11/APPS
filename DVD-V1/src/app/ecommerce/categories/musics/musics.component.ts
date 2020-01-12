@@ -41,6 +41,7 @@ export class MusicsComponent implements OnInit {
       this.shoppingCartC.reset();
       this.ordersC.paid = false;
   }
+  
 }
 
 

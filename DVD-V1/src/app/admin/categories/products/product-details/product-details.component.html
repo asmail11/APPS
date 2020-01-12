@@ -1,0 +1,32 @@
+
+<div style="margin-top: 10px"> <!-- Admin tab -->
+  <div class="panel panel-info">
+      <div class="panel-heading">
+         <p style="font-size: 18px; font-weight: bold; color: #545454;"><fa name="gamepad" animation="spin"></fa> <i class="fas fa-info-circle"></i> {{ 'Product_details' | translate }} </p>
+      </div> 
+      <div class="panel-body" *ngIf="product">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="columns">
+                    <ul class="price">
+                      <li class="header" style="background-color:#31b0d5;">{{ 'Information' | translate }}</li>
+                      <li class="grey" title="Quantity"> <ngx-counter countValue=1 limit=10 size="big" color="#ffffff" bgcolor="#7d5fff"></ngx-counter> </li>
+                      <li style="color: #b33939; font-weight: bold">Price: {{product.price}}$</li>
+                      <li>{{ 'Name' | translate }} <br> {{product.name}}</li>
+                      <li>{{ 'Description' | translate }} <br> {{product.description}}</li>
+                      <li class="grey">
+                          <button (click)="homePage()" class="button btn btn-danger">{{ 'Cancel' | translate }}</button>
+                     </li>
+                    </ul>
+                  </div>
+            </div>
+      
+             <div class="col-lg-8">
+                <img class="card-img-top img-thumbnail" style="width: 500px; height: 400px; margin-top: 15px;" src="{{product.pictureUrl}}" alt="Image">
+              </div>
+        </div>
+
+      </div>  
+  </div>
+</div>

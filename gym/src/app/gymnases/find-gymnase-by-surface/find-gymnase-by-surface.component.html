@@ -1,0 +1,35 @@
+
+    <h2> Find by surface </h2> <br>
+    <form class="example" (ngSubmit)="f.form.valid && onSubmit(g.surface)" #f="ngForm" novalidate>
+        <input type="text" placeholder="Find by surface" #name="ngModel" name="name"
+        id="name" required [(ngModel)]="g.surface">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+
+ <br>
+    <div *ngIf="total>1">
+ <div *ngIf="submitted">
+    <h2>{{total}} Salle trouvée par surface <i class='fas fa-medal'></i> {{g.surface}} </h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let gymByName of gByName" style="margin-bottom: 10px;">
+            <div class="card" style="width: 100%;">
+                <img class="card-img-top" style="padding: 15px;" src="https://elancourt.fr/files/pages/modules/image/ecole-municipale-sports-motricite-02-193.jpg" alt="the image alt text here">
+                <div class="card-body">
+                <ul class="list-group">
+                      <li class="list-group-item"> Surface: <strong>{{gymByName.surface}}</strong> </li>
+                      <li class="list-group-item"> Nom: {{gymByName.nomGymnase}}</li>
+                      <li class="list-group-item"> Addresse: {{gymByName.adresse}}</li>
+                      <li class="list-group-item"> Ville: {{gymByName.ville}}</li>
+                    </ul>
+                  <a class="btn btn-primary" (click)="gymanseDetails(gymByName.idGymnase)">More details</a>
+                </div>
+              </div>
+        </div>
+    </div>
+ </div>
+    </div>
+
+    <div *ngIf="total<=0" class="alert alert-danger">
+      <h2>No Result found</h2>
+    </div>

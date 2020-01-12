@@ -4,7 +4,7 @@ import {Subscription} from "rxjs/internal/Subscription";
 import { EcommerceService } from '../services/ecommerce.service';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/ecommerce/services/user.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -94,6 +94,9 @@ export class OrdersComponent implements OnInit {
         window.location.reload();
       }
       goToHome(){
+        this.router.navigate(['/home']);
+      }
+      goToLogin() {
         this.router.navigate(['/auth/login']);
       }
 }

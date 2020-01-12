@@ -1,0 +1,35 @@
+
+    <h2> Find by name </h2> <br>
+        <form class="example" (ngSubmit)="f.form.valid && onSubmit(g.nomGymnase)" #f="ngForm" novalidate>
+            <input type="text" placeholder="Find by nom gymnase" #name="ngModel" name="name"
+            id="name" required [(ngModel)]="g.nomGymnase">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+
+     <br>
+    <div *ngIf="total>1">
+     <div *ngIf="submitted">
+        <h2>{{total}} Salle trouvée par nomGymnase <i class='fas fa-medal'></i> {{g.nomGymnase}} </h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let gymByName of gByName" style="margin-bottom: 10px;">
+                <div class="card" style="width: 100%;">
+                    <img class="card-img-top" style="padding: 15px;" src="https://waughmachinesgymdotcom.files.wordpress.com/2016/04/group-lesmills.jpg?w=300" alt="the image alt text here">
+                    <div class="card-body">
+                    <ul class="list-group">
+                          <li class="list-group-item"> Nom: <strong>{{gymByName.nomGymnase}}</strong> </li>
+                          <li class="list-group-item"> Surface: {{gymByName.surface}}</li>
+                          <li class="list-group-item"> Addresse: {{gymByName.adresse}}</li>
+                          <li class="list-group-item"> Ville: {{gymByName.ville}}</li>
+                        </ul>
+                      <a class="btn btn-primary" (click)="gymanseDetails(gymByName.idGymnase)">More details</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+     </div>
+    </div>
+
+    <div *ngIf="total<=0" class="alert alert-danger">
+      <h2>No Result found</h2>
+    </div>

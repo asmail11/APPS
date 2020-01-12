@@ -1,2 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+.btn-primary{
+    background: linear-gradient(to right, #3848A2, #007bff, #039BE6, #028BCF, #3F51B5);
+}
+.card{
+    width: 100%;
+}

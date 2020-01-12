@@ -1,11 +1,12 @@
 <div class="container" [hidden]="orderFinished">
         <div class="row">
           <div class="col-lg-4">
-              <h2 class="title-page"><i class="fas fa-film"></i> Movies <i class="fas fa-film"></i></h2>
+              <h2 class="title-page"><i class="fas fa-film"></i> {{'Movies' | translate }} <i class="fas fa-film"></i></h2>
           </div>
         </div>
       </div>
-     <div class="row">
+      <hr>
+     <div class="row" style="padding-bottom: 40px;">
          <div class="col-md-9">
              <app-movie #productsC [hidden]="orderFinished"></app-movie>
          </div>

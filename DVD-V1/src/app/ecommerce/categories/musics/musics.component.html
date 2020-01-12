@@ -1,11 +1,12 @@
 <div class="container" [hidden]="orderFinished">
     <div class="row">
       <div class="col-lg-4">
-          <h2 class="title-page"><i class="fas fa-music"></i> Music <i class="fas fa-music"></i></h2>
+          <h2 class="title-page"><i class="fas fa-music"></i> {{'Music' | translate }} <i class="fas fa-music"></i></h2>
       </div>
     </div>
   </div>
- <div class="row">
+  <hr>
+ <div class="row" style="padding-bottom: 40px;">
      <div class="col-md-9">
          <app-music #productsC [hidden]="orderFinished"></app-music>
      </div>

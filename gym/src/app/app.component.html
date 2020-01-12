@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-expand-sm navbar-dark" style="background: #337ab7 !important; margin-bottom: 0 !important;">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" routerLink="#">
+      <i class="fas fa-fish" style='font-size:48px;color:white; margin-top: -15px; margin-left: 30px;'></i>
+    </a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+
+<!--
+    <i class="fas fa-database" ></i>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active"> Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/allSportifs']" routerLinkActive="router-link-active"> Sprtifs </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/findAllArtistes']"> Artistes </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/findAllMovies']"> Movies </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/query-demo']"> Queries </a>
+      </li>
+-->
+      <li class="nav-item" style="margin-left: -25px;">
+        <a class="nav-link" [routerLink]="['/home-restaurant']"> Restaurants </a>
+      </li>
+    </ul>
+
+  <span class="navbar-text">
+     Meilleurs Restaurants à Montreuil, Seine-Saint-Denis
+    </span>
+  </nav>
+
+<div style="padding-bottom: 20px;">
+    <router-outlet></router-outlet>
+</div>
+
+
+<br><br><br><br>
+<div class="footer">
+    <p><i class="fas fa-apple-alt" style='font-size:24px'></i> All copy right reserve Imdrmas@gmail.com  	&nbsp; <a href="#">Contact us 0767300918 </a>  <i class="fas fa-apple-alt" style='font-size:24px'></i>  </p>
+</div>

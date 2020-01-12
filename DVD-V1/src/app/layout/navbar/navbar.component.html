@@ -1,7 +1,7 @@
 
 
 <nav class="navbar navbar-expand-lg bg-primary">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" routerLink="home">
   <img src="https://www.freeiconspng.com/uploads/dvd-logo-png-10.png" alt="DVD" style="height: 38px; margin: -6px 6px -6px 20px;">
    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,31 +10,40 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link active" routerLink="home">Home | <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" routerLink="home"> {{ 'Home' | translate }} | <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item" *ngIf="authority === 'user'">
-          <a class="nav-link" routerLink="user">Profile </a>
+          <a class="nav-link" routerLink="user">{{ 'Profile' | translate }} </a>
         </li>
         <li class="nav-item" *ngIf="authority === 'admin'" class="nav-item">
-          <a class="nav-link" href="#">Admin Board | </a>
+          <a class="nav-link" routerLink="admin">{{ 'Admin_Board' | translate }}</a>
         </li>
         <li *ngIf="!authority" class="nav-item">
-            <a class="nav-link" routerLink="auth/login"> Login </a>
+            <a class="nav-link" routerLink="auth/login">{{ 'Login' | translate }} </a>
           </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          | Categories
+          | {{ 'Categories' | translate }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" routerLink="movies">Movies</a> 
-            <a class="dropdown-item" routerLink="musics">Music</a> 
-            <a class="dropdown-item" routerLink="games">Games</a>
+            <a class="dropdown-item" routerLink="movies">{{ 'Movies' | translate }}</a> 
+            <a class="dropdown-item" routerLink="musics">{{ 'Music' | translate }}</a> 
+            <a class="dropdown-item" routerLink="games">{{ 'Games' | translate }}</a>
           </div>
         </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            |  {{ 'Languages' | translate }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <button class="dropdown-item" type="button" (click)="switchLanguage('en')">English</button> 
+              <button class="dropdown-item" type="button" (click)="switchLanguage('fr')">Français</button> 
+              <button class="dropdown-item" type="button" (click)="switchLanguage('ar')">{{ 'Arabic' | translate }}</button>
+            </div>
+          </li>
       </ul>
     </div>
-    <form class="form-inline my-2 my-lg-0" style="margin-right: 16px;">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
-        <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
-      </form>
+        <button class="" type="button" style="margin-right: 20px; background: transparent;
+        border: none;" (click)=" search()"> <i style="font-size: 24px;" class="fas fa-search-minus"></i> </button>
   </nav>

@@ -1,0 +1,78 @@
+body {
+    font-family: Arial;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  .example{
+    margin-top: 12px;
+  }
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid #c1ddff;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    margin-bottom: 20px;
+  }
+  
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: linear-gradient(to right, #3848A2, #007bff, #039BE6, #028BCF, #3F51B5);
+    color: white;
+    font-size: 17px;
+    border: 1px solid #c1ddff;
+    border-left: none;
+    cursor: pointer;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .fa-info-circle{
+    color: #e3ae4b;
+    font-size: 18px;
+    cursor: pointer; 
+}
+#btn{
+     background: #FFF;
+     border: 0;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #ffd;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  #price{
+color: #d35400;
+font-weight: bold;
+padding: 10px;
+border: 1px solid antiquewhite;;
+  }

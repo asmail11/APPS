@@ -1,0 +1,22 @@
+<table class="table table-striped-bordered" *ngIf="games">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>{{ 'Name' | translate }}</th>
+        <th>{{ 'Price' | translate }}</th>
+        <th>{{ 'Action' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let game of games | async">
+          <td>{{game.id}}</td>
+          <td>{{game.name}}</td>
+          <td>{{game.price}}$</td>
+          <td><button (click)="deleteGame(game.id)" class="btn btn-danger">{{ 'Delete' | translate }}</button>
+            <button (click)="updateGame(game.id)" class="btn btn-warning" style="margin-left: 8px">{{ 'Update' | translate }}</button>
+            <button (click)="gameDetails(game.id)" class="btn btn-info" style="margin-left: 8px">{{ 'Details' | translate }}</button>
+        </td>
+        </tr>
+      </tbody>
+  </table>
+  <button (click)="createGame()" class="btn btn-primary" style="margin-left: 8px">{{ 'Create_a_new' | translate }}</button>

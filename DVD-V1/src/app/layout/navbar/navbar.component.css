@@ -2,6 +2,7 @@
 .navbar{
   margin-bottom: 24px;
 }
+.dropdown-item,
 .navbar a{
   color: #FFF !important;
 }

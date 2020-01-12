@@ -4,6 +4,7 @@ import { AuthLoginInfo } from './login-info';
 import { Observable } from 'rxjs';
 import { JwtResponse } from './jwt-response';
 import { SignUpInfo } from './sigup-info';
+import { AdminInfo } from './admin-info';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -26,5 +27,7 @@ export class AuthService {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
 
-  
+  signUpAdmin(info: AdminInfo): Observable<string> {
+    return this.http.post<string>(this.signupUrl, info, httpOptions);
+  }
 }

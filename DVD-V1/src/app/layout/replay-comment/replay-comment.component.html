@@ -1,0 +1,19 @@
+<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+  <label for="messageReplay">{{ 'Subject_Replay' | translate }}</label>
+  <textarea type="text" id="messageReplay" name="messageReplay" maxlength="200"  minlength="4" [(ngModel)]="form.messageReplay" appForbiddenName="bob"
+   placeholder="Write something.." #messageReplay="ngModel" required style="height:200px"></textarea>
+  <div *ngIf="messageReplay.invalid && f.submitted" class="alert alert-danger" [hidden]="submitted">
+    <div *ngIf="messageReplay.errors.required">
+       {{ 'Subject_is_required' | translate }}
+    </div>
+    <div *ngIf="messageReplay.errors.minlength">
+     {{ 'Subject_must_be_at_least_4_characters_long' | translate }}
+    </div>
+    <div *ngIf="messageReplay.errors.maxlength">
+      {{ 'Subject_must_be_at_least_200_characters_long' | translate }}
+     </div>
+      </div>
+
+      <button class="btn btn-primary">Replay</button>
+</form>

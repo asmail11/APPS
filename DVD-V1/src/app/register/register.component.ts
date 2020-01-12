@@ -14,11 +14,11 @@ export class RegisterComponent implements OnInit {
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
+  active = false;
 
   constructor(private authService: AuthService, private router: Router) { }
-  ngOnInit() {
-  
-  }
+  ngOnInit() { }
+
   onSubmit(){
     console.log(this.form);
       this.signupInfo = new SignUpInfo(
@@ -35,7 +35,8 @@ export class RegisterComponent implements OnInit {
       this.form.zip,
       this.form.state,
       this.form.username,
-      this.form.password);
+      this.form.password,
+      this.form.active = this.active);
 
       this.authService.signUp(this.signupInfo).subscribe(
         data => {

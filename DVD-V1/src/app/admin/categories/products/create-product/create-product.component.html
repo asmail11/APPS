@@ -1,0 +1,104 @@
+
+
+<div style="margin-top: 10px"> <!-- Admin tab -->
+  <div class="panel panel-info">
+      <div class="panel-heading">
+         <p style="font-size: 18px; font-weight: bold; color: #31708f;"><i class="fas fa-plus-square" style="font-size: 24px;"></i> {{ 'Create_product' | translate }}     <button style="margin-left: 8px; float: right;" (click)="homePage()" class="btn btn-danger">X</button></p>
+      </div> 
+      <div class="panel-body" *ngIf="product">
+
+           <div class="row" [hidden]="submitted">
+             <div class="col-md-6">
+              <div style="background: #d9edf7; padding: 20px; border-radius: 10px; border: 1px solid #bce8f1;">
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                  
+                    <div class="form-group">
+                        <label for="name">{{ 'Name' | translate }}</label>
+                        <input type="text" class="form-control" id="name" required minlength="4" appForbiddenName="bob"
+                        [(ngModel)]="product.name" #name="ngModel" name="name" placeholder="name">
+              
+                   <div *ngIf="name.invalid && f.submitted" class="alert alert-danger">
+                <div *ngIf="name.errors.required">
+                   {{ 'Name_is_required' | translate }}
+                </div>
+                <div *ngIf="name.errors.minlength">
+                 {{ ' Name_must_be_at_least_4_characters_long' | translate }}
+                </div>
+                <div *ngIf="name.errors.forbiddenName">
+                   {{ 'Name_cannot_be_Bob' | translate }}
+                </div>
+                  </div>
+                      </div>
+                  
+                      <div class="form-group">
+                        <label for="description"> {{ 'Description' | translate }}</label>
+                        <input type="text" class="form-control" id="description" [(ngModel)]="product.description" 
+                        name="description" placeholder="description" required minlength="4" appForbiddenName="bob"  #description="ngModel">
+                        <div *ngIf="description.invalid && f.submitted" class="alert alert-danger">
+                            <div *ngIf="description.errors.required">
+                                {{ 'Description_is_required' | translate }}
+                            </div>
+                            <div *ngIf="description.errors.minlength">
+                                {{ 'Description_must_be_at_least_4_characters_long' | translate }}
+                            </div>
+                            <div *ngIf="description.errors.forbiddenName">
+                               {{ 'Description_cannot_be_Bob' | translate }}
+                            </div>
+                              </div>
+                      </div>
+                  
+                      <div class="form-group">
+                        <label for="price">{{ 'Price' | translate }}</label>
+                        <input type="text" class="form-control" id="price" [(ngModel)]="product.price" name="price" 
+                        placeholder="price" required minlength="1" appForbiddenName="bob"  #price="ngModel">
+                        <div *ngIf="price.invalid && f.submitted" class="alert alert-danger">
+                            <div *ngIf="price.errors.required">
+                                {{ 'Price_is_required' | translate }}
+                            </div>
+                            <div *ngIf="price.errors.minlength">
+                               {{ 'Price_must_be_at_least_1_$' | translate }}
+                            </div>
+                            <div *ngIf="price.errors.forbiddenName">
+                                {{ 'Price_cannot_be_Bob' | translate }}
+                            </div>
+                              </div>
+                      </div>
+              
+                      <div class="form-group">
+                          <label for="pictureUrl">{{ 'Image' | translate }}</label>
+                          <input type="text" class="form-control" id="pictureUrl" [(ngModel)]="product.pictureUrl" name="pictureUrl" 
+                          placeholder="picture url" required minlength="4" appForbiddenName="bob"  #pictureUrl="ngModel">
+              
+                          <div *ngIf="pictureUrl.invalid && f.submitted" class="alert alert-danger">
+                              <div *ngIf="pictureUrl.errors.required">
+                                   {{ 'Image_is_required' | translate }}
+                              </div>
+                              <div *ngIf="pictureUrl.errors.minlength">
+                                 {{ 'Image_must_be_at_least_4_characters_long' | translate }}
+                              </div>
+                              <div *ngIf="pictureUrl.errors.forbiddenName">
+                                  {{ 'Image_cannot_be_Bob' | translate }}
+                              </div>
+                                </div>
+                        </div>
+                
+                      <button type="submit" class="btn btn-primary" >{{ 'Submit' | translate }}</button>
+
+                </form>       
+              </div>  
+             </div>
+             <div class="col-md-6">
+              <img class="card-img-top img-thumbnail" style="width: 500px; height: 370px;" src="http://www.rfassociates.com.au/images/blank-avatar.jpg" alt="">
+             </div>
+           </div>
+          
+           <div [hidden]="!submitted" style="text-align: center; padding-bottom: 20px;"> 
+         
+              <div class="alert alert-success" role="alert">
+                <h4>{{ 'New_product_create_successfully' | translate }} </h4>
+              </div>
+             </div>
+
+      </div>  
+  </div>
+</div>

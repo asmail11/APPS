@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../ecommerce/services/user.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { Router } from '@angular/router';
 
@@ -67,5 +67,19 @@ export class UserComponent implements OnInit {
      window.location.reload();
     this.router.navigate(['/home']);
   }
-
+  navigateToLogin() {
+    this.router.navigateByUrl('auth/login');
+ }
+ updateUser(){
+   this.router.navigate(['update/profile', this.id]);
+ }
+ deleteUser(id: number){
+  if(confirm("Are you sure to delete account "+id)){
+    this.userService.deleteUser(id).subscribe(
+      data => {
+        console.log(data);
+      }, error => console.log(error));
+  }
+  this.logout();
+}
 }

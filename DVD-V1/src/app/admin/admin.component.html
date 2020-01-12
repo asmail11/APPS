@@ -1,69 +1,158 @@
 <div class="container" *ngIf="info.token; else loggedOut">
-        <div class="row profile">
-            <div class="col-md-3" style="background: aliceblue; padding: 20px;">
-                <div class="profile-sidebar">
-                    <!-- SIDEBAR USERPIC -->
-                    <div class="profile-userpic">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKqXeFw93-DRzIVaPnvDAzMDBVfGqpLr_JsIyRgiNFB2XP16uj" class="img-responsive" alt="">
-                    </div>
-                    <!-- END SIDEBAR USERPIC -->
-                    <!-- SIDEBAR USER TITLE -->
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">
-                            {{name}}
+
+        <div class="container" id="homePage">
+                <div class="row">
+                
+                <div class="col-md-12" style="padding-right: 30px; margin-top: 10px;">
+                  <div class="col-xs-2" style="background: #ecf0f1; padding: 10px; border-radius: 7px; border: 1px solid #b7c8d7;"> <!-- required for floating -->
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tabs-left" *ngFor="let tab of tabs">
+                      <li [ngClass]="{'active': tab.active}" >
+                        <a (click)="tabChange(tab)" style="   border-radius: 5px; border: none !important;">{{tab.name}}</a>
+                      </li>             
+                    </ul>
+                   
+                  </div>
+        
+                  <div class="col-xs-10">
+                    <div class="tab-content">
+                      <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 1, 'hideTab':selectedUserTab != 1}"> <!-- Profile tab -->
+                          <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                 <p style="font-size: 18px; font-weight: bold;"><i class="fas fa-film"></i> {{'Movies' | translate }}</p>
+                              </div> 
+                              <div class="panel-body">
+                                    <app-movie-list></app-movie-list>
+                              </div>  
+                          </div>
+                      </div>
+                
+                      <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 2, 'hideTab':selectedUserTab != 2}"> <!-- Change password tab -->
+                          <div class="panel panel-success">
+                              <div class="panel-heading">
+                                 <p style="font-size: 18px; font-weight: bold; color: #545454;"><i class="fas fa-music"></i> {{'Music' | translate }}</p>
+                              </div> 
+                              <div class="panel-body">
+                                    <app-music-list></app-music-list>
+                              </div>  
+                          </div>
+                      </div>
+                
+                      <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 3, 'hideTab':selectedUserTab != 3}"> <!-- Change password tab -->
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                               <p style="font-size: 18px; font-weight: bold; color: #545454;"><i class="fas fa-gamepad"></i> {{'Games' | translate }} </p>
+                            </div> 
+                            <div class="panel-body">
+                                    <app-game-list></app-game-list>
+                            </div>  
                         </div>
-                        <div class="profile-usertitle-job">
-                            {{email}}
-                        </div>
                     </div>
-                    <!-- END SIDEBAR USER TITLE -->
-                    <!-- SIDEBAR BUTTONS -->
-                    <div class="profile-userbuttons">
-                        <button type="button" class="btn btn-success btn-sm" (click)='updateUser()'>Update</button>
-                        <button type="button" class="btn btn-danger btn-sm" (click)="logout()">Logout</button>
+                
+                    <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 4, 'hideTab':selectedUserTab != 4}"> <!-- Change password tab -->
+                      <div class="panel panel-warning">
+                          <div class="panel-heading">
+                             <p style="font-size: 18px; font-weight: bold; color: #545454;"><i class="fab fa-dropbox"></i> {{'Products' | translate }} </p>
+                          </div> 
+                          <div class="panel-body">
+                                <app-product-list></app-product-list>
+                          </div>  
+                      </div>
+                  </div>
+
+                  <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 5, 'hideTab':selectedUserTab != 5}"> <!-- Change password tab -->
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                           <p style="font-size: 18px; font-weight: bold;"> <i class="glyphicon glyphicon-user"></i> {{'Profile' | translate }} </p>
+                        </div> 
+                        <div class="panel-body">
+                                <div class="row profile">
+                                        <div class="col-md-5" >
+                                            <div class="profile-sidebar">
+                                            
+                                                <div class="profile-userpic">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKqXeFw93-DRzIVaPnvDAzMDBVfGqpLr_JsIyRgiNFB2XP16uj" class="img-responsive img-rounded" alt="avater">
+                                                </div>
+                                          
+                                                <div class="profile-usertitle">
+                                                    <div class="profile-usertitle-name">
+                                                        {{name}}
+                                                    </div>
+                                                    <div class="profile-usertitle-job">
+                                                        {{email}}
+                                                    </div>
+                                                </div>
+                                       
+                                                <div class="profile-userbuttons">
+                                                    <button type="button" class="btn btn-success btn-sm" (click)='updateUser()'>{{'Update' | translate }}</button>
+                                                    <button type="button" class="btn btn-danger btn-sm" (click)="logout()">{{'Logout' | translate }}</button>
+                                                    <a class="active" class="btn btn-primary btn-sm" routerLink="/add/admin">Add admin</a> 
+                                                </div>
+                                           
+                                              
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                                <div class="profile-usermenu">
+                                                        <ul class="nav" style="display: block;">
+                                                            <li class="active">
+                                                                <a>
+                                                                <i class="glyphicon glyphicon-home"></i>
+                                                                {{address}} </a>
+                                                            </li>
+                                                            <li>
+                                                                <a>
+                                                                  <i class="fas fa-building"></i>
+                                                                {{city}} </a>
+                                                            </li>
+                                                            <li>
+                                                                <a>
+                                                                <i class="glyphicon glyphicon-ok"></i>
+                                                                {{zip}} </a>
+                                                            </li>
+                                                            <li>
+                                                                <a>
+                                                                <i class="glyphicon glyphicon-flag"></i>
+                                                                {{state}} </a>
+                                                            </li>
+                                                            <li>
+                                                                    <button class="btn btn-link" type="submit" style="color: coral" (click)="deleteUser(id)">
+                                                                    <i class="glyphicon glyphicon-remove"></i>  {{'Delete_your_account' | translate }}   
+                                                                   </button>
+                                                                   </li>
+                                                        </ul>
+                                                    </div>
+                                        </div>
+                                    
+                                    </div> 
+                        </div>  
                     </div>
-                    <!-- END SIDEBAR BUTTONS -->
-                    <!-- SIDEBAR MENU -->
-                    <div class="profile-usermenu">
-                        <ul class="nav">
-                            <li class="active">
-                                <a>
-                                <i class="glyphicon glyphicon-home"></i>
-                                {{address}} </a>
-                            </li>
-                            <li>
-                                <a>
-                                <i class="glyphicon glyphicon-user"></i>
-                                {{city}} </a>
-                            </li>
-                            <li>
-                                <a>
-                                <i class="glyphicon glyphicon-ok"></i>
-                                {{zip}} </a>
-                            </li>
-                            <li>
-                                <a>
-                                <i class="glyphicon glyphicon-flag"></i>
-                                {{state}} </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- END MENU -->
                 </div>
-            </div>
-            <div class="col-md-9">
-                <div class="profile-content">
-                   Some user related content goes here...
+
+                <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 6, 'hideTab':selectedUserTab != 6}"> <!-- Change password tab -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                           <p style="font-size: 18px; font-weight: bold; color: #ffffff;"><i class="fab fa-dropbox"></i> {{'Users' | translate }} </p>
+                        </div> 
+                        <div class="panel-body">
+                         <app-all-users></app-all-users>
+                        </div>  
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <center>
-    <strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
-    </center>
-    <br>
-    <br>
+              
+                    </div>                 
+                  </div>               
+                </div>
+                
+                
+         </div>
+       </div>              
+    </div> 
+
+
 
     <ng-template #loggedOut>
-            Please Login.
+            <div class="alert alert-danger" style="margin-top: 10px;">
+                    {{'Please_Login' | translate }} <button class="btn btn-link" (click)="navigateToLogin()"> {{'Login' | translate }} </button>
+                </div>  
           </ng-template>

@@ -1,0 +1,172 @@
+
+<div class="container">
+  <span>Afficher les infos sur le film dont l'id est 2 ?</span>
+        <table class="table table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th>Id</th>
+            <th>Role</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Country</th>
+            <th>Year</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let m of movieId.actors">
+            <td>{{movieId._id}}</td>
+            <td *ngIf="m.role">{{m.role}}</td>
+            <td>{{movieId.title}}</td>
+            <td>{{movieId.genre}}</td>
+            <td>{{movieId.country}}</td>
+            <td>{{movieId.year}}</td>
+          </tr>
+          </tbody>
+        </table>
+  <hr>
+
+  <span>Lister ts les films produits en 1979 ? </span>
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Country</th>
+      <th>Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let m of years">
+      <td>{{m._id}}</td>
+      <td>{{m.title}}</td>
+      <td>{{m.genre}}</td>
+      <td>{{m.country}}</td>
+      <td>{{m.year}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+
+  <span>Afficher les infos sur le film dont le title est "Alien" produit en 1979 ?</span>
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Role</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Country</th>
+      <th>Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let m of movieTitle.actors">
+      <td>{{movieTitle._id}}</td>
+      <td *ngIf="m.role">{{m.role}}</td>
+      <td>{{movieTitle.title}}</td>
+      <td>{{movieTitle.genre}}</td>
+      <td>{{movieTitle.country}}</td>
+      <td>{{movieTitle.year}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+
+  <span>Trouver tous les films produits par le director dont l'id est 4 ?</span>
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Country</th>
+      <th>Year</th>
+      <th>DirectorID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let m of movieDirector">
+      <td>{{m._id}}</td>
+      <td>{{m.title}}</td>
+      <td>{{m.genre}}</td>
+      <td>{{m.country}}</td>
+      <td>{{m.year}}</td>
+      <td>{{m.director._id}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+
+
+  <span>Trouver tous les films dont l'acteur dont l'id est 23 a joué denans ?</span>
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Country</th>
+      <th>Year</th>
+      <th>DirectorID</th>
+    </tr>
+    </thead>
+    <tbody style="background: #00a8ff; color: #FFFFFF">
+    <tr>
+      <td>No data</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+
+  <span>Tous les films dont le titre commence par "Re" ?</span>
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Country</th>
+      <th>Year</th>
+      <th>DirectorID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let m of movieSearch">
+      <td>{{m._id}}</td>
+      <td>{{m.title}}</td>
+      <td>{{m.genre}}</td>
+      <td>{{m.country}}</td>
+      <td>{{m.year}}</td>
+      <td>{{m.director._id}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+
+  <span>Tous les films produits après 200 et avent 2015</span>
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Country</th>
+      <th>Year</th>
+      <th>DirectorID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let m of movieBetween">
+      <td>{{m._id}}</td>
+      <td>{{m.title}}</td>
+      <td>{{m.genre}}</td>
+      <td>{{m.country}}</td>
+      <td>{{m.year}}</td>
+      <td>{{m.director._id}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+
+</div>
